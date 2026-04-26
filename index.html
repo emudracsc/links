@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>CSC सेवा | DSC कंपन्या पॉपअप</title>
+    <title>CSC सेवा | DSC व PAN कार्ड पॉपअप कंपन्या</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts -->
@@ -399,7 +399,7 @@
             opacity: 1;
         }
 
-        /* ---------- POPUP MODAL STYLES ---------- */
+        /* ---------- POPUP MODAL STYLES (DSC & PAN) ---------- */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -428,14 +428,8 @@
             border: 1px solid var(--card-border);
         }
         @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
         .modal-header {
             display: flex;
@@ -539,19 +533,19 @@
 
         <!-- Services Grid -->
         <div class="services-grid">
-            <!-- DSC CARD - यावर क्लिक करून पॉपअप मध्ये कंपन्या दाखवा -->
+            <!-- DSC CARD - पॉपअप कंपन्या -->
             <div class="service-card" id="dscCard">
                 <div class="icon-large"><i class="fas fa-digital-tiling"></i></div>
                 <h3>डिजिटल सिग्नेचर (DSC)</h3>
                 <div class="service-desc">क्लास 2 / क्लास 3 DSC, नवीन नोंदणी, रिन्यूअल. कंपनीनुसार लिंक्स साठी क्लिक करा.</div>
-                <button class="btn-link" id="dscPopupBtn"><i class="fas fa-building"></i> DSC नोंदणी कंपन्या</button>
+                <button class="btn-link" id="dscPopupBtn"><i class="fas fa-building"></i> DSC कंपन्या पहा</button>
             </div>
-            <!-- PAN Card -->
+            <!-- PAN CARD - पॉपअप कंपन्या (tyach pramane) -->
             <div class="service-card" id="panCardCard">
                 <div class="icon-large"><i class="fas fa-id-card"></i></div>
                 <h3>PAN कार्ड नोंदणी</h3>
-                <div class="service-desc">नवीन पॅन कार्ड, सुधारणा, डुप्लिकेट, ई-पॅन त्वरित मिळवा.</div>
-                <a href="#" class="btn-link" id="panRegBtn"><i class="fas fa-arrow-right"></i> PAN नोंदणी करा</a>
+                <div class="service-desc">नवीन पॅन कार्ड, सुधारणा, डुप्लिकेट, ई-पॅन. कंपनीनुसार लिंक्स साठी क्लिक करा.</div>
+                <button class="btn-link" id="panPopupBtn"><i class="fas fa-building"></i> PAN कंपन्या पहा</button>
             </div>
             <!-- CSC Services -->
             <div class="service-card" id="cscServiceCard">
@@ -575,7 +569,7 @@
                 <p style="margin-top:12px; font-size:0.8rem;">शासनाच्या विविध योजना, अर्ज, सेवा पुरवठा.</p>
             </div>
         </div>
-        <div class="info-note"><p><i class="fas fa-info-circle"></i> ✨ DSC बटणावर क्लिक केल्यास DSC प्रदाता कंपन्यांची पॉपअप यादी दिसेल. प्रत्येक कंपनीच्या लिंकवर क्लिक केल्यावर नवीन टॅबमध्ये अधिकृत वेबसाइट उघडेल.</p></div>
+        <div class="info-note"><p><i class="fas fa-info-circle"></i> ✨ DSC आणि PAN कार्ड बटणावर क्लिक केल्यास अनुक्रमे DSC प्रदाता आणि PAN कार्ड नोंदणी कंपन्यांची पॉपअप यादी दिसेल. प्रत्येक कंपनीच्या लिंकवर क्लिक केल्यावर नवीन टॅबमध्ये अधिकृत वेबसाइट उघडेल.</p></div>
         <footer><i class="fas fa-chalkboard-user"></i> माझी CSC सेवा | डिजिटल इंडियाचा भाग | सर्व हक्क राखीव © 2025</footer>
     </div>
 
@@ -584,19 +578,27 @@
         <div class="modal-container">
             <div class="modal-header">
                 <h3><i class="fas fa-digital-tiling"></i> DSC नोंदणी कंपन्या</h3>
-                <button class="modal-close" id="closeModalBtn"><i class="fas fa-times"></i></button>
+                <button class="modal-close" id="closeDscModalBtn"><i class="fas fa-times"></i></button>
             </div>
-            <div class="company-list" id="companyListContainer">
-                <!-- कंपन्या लिंक्स dynamic असतील पण इथे static पण चालेल -->
-                <!-- प्रत्येक लिंक नवीन टॅब मध्ये उघडेल -->
+            <div class="company-list" id="dscCompanyList"></div>
+        </div>
+    </div>
+
+    <!-- POPUP MODAL for PAN Companies -->
+    <div id="panModal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3><i class="fas fa-id-card"></i> PAN कार्ड नोंदणी कंपन्या</h3>
+                <button class="modal-close" id="closePanModalBtn"><i class="fas fa-times"></i></button>
             </div>
+            <div class="company-list" id="panCompanyList"></div>
         </div>
     </div>
 
     <div id="toastMsg" class="toast-msg">✓ कॉपी झाले!</div>
 
     <script>
-        // DSC कंपन्यांची माहिती (कंपनी नाव + लिंक)
+        // DSC कंपन्यांची माहिती
         const dscCompanies = [
             { name: "eMudhra (ई-मुद्रा)", url: "https://www.emudhra.com/dsc" },
             { name: "nCode Solutions (nCode)", url: "https://www.ncode.in/digital-signature-certificate" },
@@ -606,81 +608,104 @@
             { name: "eSign (CSC eSign)", url: "https://www.csccloud.in/esign" }
         ];
 
-        // DOM elements
-        const modal = document.getElementById('dscModal');
-        const closeModalBtn = document.getElementById('closeModalBtn');
+        // PAN कार्ड कंपन्या / अधिकृत सेवा प्रदाता (NSDL, UTIITSL, Protean, etc.)
+        const panCompanies = [
+            { name: "NSDL e-Governance (प्रोटीन)", url: "https://www.onlineservices.nsdl.com/paam/endUserRegister.html" },
+            { name: "UTIITSL (PAN नोंदणी)", url: "https://www.utiitsl.com/utiitsl_web/pan/index.jsp" },
+            { name: "Protean (माजी NSDL)", url: "https://www.proteantech.in/pan-services" },
+            { name: "Tata Consultancy Services (TCS PAN)", url: "https://www.tcs.com/pan-card-services" },
+            { name: "CSC PAN सेवा", url: "https://csc.gov.in/panCardApplication" }
+        ];
+
+        // Modal elements
+        const dscModal = document.getElementById('dscModal');
+        const panModal = document.getElementById('panModal');
+        const closeDscBtn = document.getElementById('closeDscModalBtn');
+        const closePanBtn = document.getElementById('closePanModalBtn');
         const dscPopupBtn = document.getElementById('dscPopupBtn');
-        const companyContainer = document.getElementById('companyListContainer');
-        
-        // फंक्शन: पॉपअप मध्ये कंपन्या बटणे तयार करा
-        function loadCompanyButtons() {
-            companyContainer.innerHTML = '';
-            dscCompanies.forEach(company => {
+        const panPopupBtn = document.getElementById('panPopupBtn');
+        const dscCompanyList = document.getElementById('dscCompanyList');
+        const panCompanyList = document.getElementById('panCompanyList');
+
+        // Helper: create company buttons inside a container and attach new-tab behavior
+        function populateCompanyList(container, companies, openNewTab = true) {
+            if (!container) return;
+            container.innerHTML = '';
+            companies.forEach(company => {
                 const linkBtn = document.createElement('a');
                 linkBtn.href = '#';
                 linkBtn.className = 'company-link-btn';
                 linkBtn.setAttribute('data-url', company.url);
-                linkBtn.innerHTML = `
-                    <span><i class="fas fa-building"></i> ${company.name}</span>
-                    <i class="fas fa-external-link-alt"></i>
-                `;
-                // प्रत्येक लिंकवर क्लिक केल्यावर नवीन टॅब उघडा
+                linkBtn.innerHTML = `<span><i class="fas fa-building"></i> ${company.name}</span><i class="fas fa-external-link-alt"></i>`;
                 linkBtn.addEventListener('click', (e) => {
                     e.preventDefault();
                     const targetUrl = linkBtn.getAttribute('data-url');
                     if (targetUrl) {
                         window.open(targetUrl, '_blank');
-                        // पॉपअप बंद करायचा की नाही? वापरकर्त्याला सोयीसाठी थोडा वेळ थांबवून बंद केल्यास बरे; पण आपण फक्त उघडू आणि पॉपअप बंद करू नये कारण पुन्हा पाहू शकतो.
-                        // परंतु हवे असल्यास modal बंद करू शकतो; पण अधिक चांगले म्हणजे क्लिक केल्यावर बंद न करणे - user स्वतः बंद करेल.
-                        // असेच ठेवू.
                     }
                 });
-                companyContainer.appendChild(linkBtn);
+                container.appendChild(linkBtn);
             });
         }
-        
-        // पॉपअप दाखवा
-        function openModal() {
-            loadCompanyButtons(); // refresh
+
+        // Modal open/close functions
+        function openModal(modal) {
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-        
-        function closeModal() {
+        function closeModal(modal) {
             modal.classList.remove('active');
             document.body.style.overflow = '';
         }
-        
-        // DSC बटणावर क्लिक -> पॉपअप
-        if(dscPopupBtn) {
+
+        // DSC Popup
+        if (dscPopupBtn) {
             dscPopupBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                openModal();
+                populateCompanyList(dscCompanyList, dscCompanies);
+                openModal(dscModal);
             });
         }
-        
-        // कार्डवर क्लिक केल्यास पण पॉपअप उघडू शकतो (पर्यायी)
+        // PAN Popup
+        if (panPopupBtn) {
+            panPopupBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                populateCompanyList(panCompanyList, panCompanies);
+                openModal(panModal);
+            });
+        }
+
+        // Close buttons
+        if (closeDscBtn) closeDscBtn.addEventListener('click', () => closeModal(dscModal));
+        if (closePanBtn) closePanBtn.addEventListener('click', () => closeModal(panModal));
+        // Click outside to close
+        dscModal.addEventListener('click', (e) => { if (e.target === dscModal) closeModal(dscModal); });
+        panModal.addEventListener('click', (e) => { if (e.target === panModal) closeModal(panModal); });
+        // ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (dscModal.classList.contains('active')) closeModal(dscModal);
+                if (panModal.classList.contains('active')) closeModal(panModal);
+            }
+        });
+
+        // Card clicks optional also open respective modals
         const dscCardDiv = document.getElementById('dscCard');
         dscCardDiv.addEventListener('click', (e) => {
-            if(e.target.tagName !== 'BUTTON' && e.target.closest('button') !== dscPopupBtn && !e.target.closest('.btn-link')) {
-                openModal();
+            if (e.target.tagName !== 'BUTTON' && !e.target.closest('.btn-link')) {
+                populateCompanyList(dscCompanyList, dscCompanies);
+                openModal(dscModal);
             }
         });
-        
-        // मोडल बंद करणे
-        closeModalBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', (e) => {
-            if(e.target === modal) closeModal();
-        });
-        
-        // Esc की ने बंद
-        document.addEventListener('keydown', (e) => {
-            if(e.key === 'Escape' && modal.classList.contains('active')) {
-                closeModal();
+        const panCardDiv = document.getElementById('panCardCard');
+        panCardDiv.addEventListener('click', (e) => {
+            if (e.target.tagName !== 'BUTTON' && !e.target.closest('.btn-link')) {
+                populateCompanyList(panCompanyList, panCompanies);
+                openModal(panModal);
             }
         });
-        
-        // ----- Copy referral link -----
+
+        // --- Copy referral link ---
         const referLinkInput = document.getElementById('referralLinkInput');
         const copyBtn = document.getElementById('copyReferralBtn');
         const toast = document.getElementById('toastMsg');
@@ -693,17 +718,10 @@
             referLinkInput.select();
             navigator.clipboard.writeText(referLinkInput.value).then(() => showToast("रेफरल लिंक कॉपी झाली! ✨"));
         });
-        
-        // PAN card link
-        const panBtn = document.getElementById('panRegBtn');
-        panBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.open('https://www.onlineservices.nsdl.com/paam/endUserRegister.html', '_blank');
-        });
+
         // CSC main link
         const cscMainBtn = document.getElementById('cscMainLinkBtn');
         cscMainBtn.addEventListener('click', (e) => { e.preventDefault(); window.open('https://csc.gov.in/', '_blank'); });
-        // CSC direct
         const cscDirect = document.getElementById('cscDirectLink');
         const visitCSC = document.getElementById('visitCSCBtn');
         function openCSC() { window.open('https://csc.gov.in/', '_blank'); }
@@ -716,7 +734,7 @@
         aapleLink.addEventListener('click', (e) => { e.preventDefault(); openAaple(); });
         visitAaple.addEventListener('click', openAaple);
         
-        // Theme toggle logic
+        // Theme toggle
         const toggleBtn = document.getElementById('themeToggleBtn');
         const themeIconSpan = document.getElementById('themeIcon');
         const themeTextSpan = document.getElementById('themeText');
@@ -744,12 +762,7 @@
             }
         });
         
-        // PAN Card card click alternative
-        document.getElementById('panCardCard').addEventListener('click', (e) => {
-            if(e.target.tagName !== 'A' && !e.target.closest('a')) {
-                window.open('https://www.onlineservices.nsdl.com/paam/endUserRegister.html', '_blank');
-            }
-        });
+        // CSC service card extra link
         document.getElementById('cscServiceCard').addEventListener('click', (e) => {
             if(e.target.tagName !== 'A' && !e.target.closest('a')) {
                 window.open('https://csc.gov.in/', '_blank');
