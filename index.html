@@ -3,270 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>माझी CSC सेवा | १० सेवा बॉक्स | सिंधुदुर्ग डिजिटल पोर्टल</title>
+    <title>माझी CSC सेवा | १० सुरक्षित कंटेनर | सिंधुदुर्ग</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        /* ========== THEME VARIABLES ========== */
         :root {
             --gradient-start: #0f0c29; --gradient-mid: #302b63; --gradient-end: #24243e;
-            --overlay-color1: rgba(255, 0, 150, 0.12); --overlay-color2: rgba(0, 255, 200, 0.08);
-            --card-bg: rgba(255, 255, 255, 0.96); --card-border: rgba(200, 200, 220, 0.5);
-            --text-primary: #1e293b; --text-secondary: #475569;
-            --hero-bg-start: rgba(15, 43, 61, 0.9); --hero-bg-end: rgba(27, 74, 110, 0.9);
-            --btn-primary: #1e3a5f; --btn-primary-hover: #0f2b3f;
-            --icon-bg: #fef3e8; --icon-color: #c2410c;
+            --card-bg: rgba(255, 255, 255, 0.96); --text-primary: #1e293b;
+            --btn-success: #22c55e; --icon-color: #c2410c;
         }
-
-        body.theme-sunset { --gradient-start: #2d1a11; --gradient-mid: #5c2e1a; --btn-primary: #c2410c; }
-        body.theme-ocean { --gradient-start: #0c1a2e; --gradient-mid: #1a3b5c; --btn-primary: #0284c7; }
-        body.theme-forest { --gradient-start: #0a1f0a; --gradient-mid: #1a3b1a; --btn-primary: #15803d; }
-        body.theme-royal { --gradient-start: #1a0f2e; --gradient-mid: #3b1a63; --btn-primary: #7e22ce; }
-
-        body.dark {
-            --card-bg: rgba(30, 41, 59, 0.94); --card-border: rgba(51, 65, 85, 0.6);
-            --text-primary: #f1f5f9; --text-secondary: #cbd5e1;
-        }
-
+        body.dark { --card-bg: #1e293b; --text-primary: #f1f5f9; }
+        
         body {
             font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;
             background: radial-gradient(circle at 20% 30%, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
-            background-attachment: fixed; min-height: 100vh; padding: 1rem; transition: background 0.4s ease;
+            background-attachment: fixed; min-height: 100vh; padding: 1.5rem; color: var(--text-primary);
         }
 
-        .container { max-width: 1300px; margin: 0 auto; position: relative; z-index: 2; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .hero { text-align: center; color: white; margin-bottom: 30px; padding: 20px; }
 
-        /* ========== HERO & CONTROLS ========== */
-        .color-palette {
-            position: fixed; top: 1rem; left: 1rem; z-index: 1000; display: flex; gap: 0.6rem;
-            background: rgba(255,255,255,0.25); backdrop-filter: blur(12px); padding: 0.5rem 0.8rem;
-            border-radius: 3rem; border: 1px solid rgba(255,255,255,0.3);
+        /* १० सेवा बॉक्सेस ग्रिड */
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 15px; 
         }
-        .color-btn { width: 32px; height: 32px; border-radius: 50%; cursor: pointer; border: 2px solid white; transition: 0.2s; }
-        .color-btn.active { transform: scale(1.1); box-shadow: 0 0 15px white; }
-
-        .theme-toggle {
-            position: fixed; top: 1rem; right: 1rem; z-index: 1000; background: var(--card-bg);
-            border: 1px solid var(--card-border); border-radius: 2rem; padding: 0.5rem 1rem; cursor: pointer;
-            color: var(--text-primary); font-weight: 600; font-size: 0.75rem;
-        }
-
-        .hero { 
-            border-radius: 1.5rem; padding: 2rem; margin-bottom: 1.5rem; color: white; text-align: center;
-            background: linear-gradient(105deg, var(--hero-bg-start) 0%, var(--hero-bg-end) 100%);
-            backdrop-filter: blur(8px); border: 1px solid var(--card-border);
-        }
-        .hero h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
-
-        /* ========== SERVICES GRID ========== */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.2rem; margin: 1.5rem 0; }
         .service-card { 
-            background: var(--card-bg); border: 1px solid var(--card-border); padding: 1.5rem; 
-            border-radius: 1.2rem; text-align: center; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer; backdrop-filter: blur(8px);
+            background: var(--card-bg); padding: 20px; border-radius: 15px; 
+            cursor: pointer; transition: 0.3s; text-align: center;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            border: 1px solid rgba(200, 200, 220, 0.3);
         }
-        .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.3); }
+        .icon-box { font-size: 35px; margin-bottom: 12px; color: var(--icon-color); }
+        .service-card h3 { font-size: 1rem; margin-bottom: 5px; }
+        .service-card p { font-size: 0.75rem; color: #64748b; }
 
-        .icon-large { 
-            width: 55px; height: 55px; background: var(--icon-bg); color: var(--icon-color);
-            border-radius: 1rem; display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 1rem; font-size: 1.5rem;
+        /* सुरक्षित लॉगिन मोडल */
+        .modal-overlay { 
+            position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.9);
+            display: none; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(5px);
         }
-
-        .btn-link { 
-            display: inline-flex; margin-top: 1rem; padding: 0.5rem 1rem; background: var(--btn-primary);
-            color: white; text-decoration: none; border-radius: 2rem; font-size: 0.75rem; align-items: center; gap: 5px;
+        .modal-content { 
+            background: var(--card-bg); padding: 30px; border-radius: 20px; 
+            width: 90%; max-width: 380px; text-align: left; position: relative;
         }
-
-        .demo-badge { background: #22c55e30; color: #22c55e; font-size: 0.55rem; padding: 2px 6px; border-radius: 10px; margin-left: 5px; }
-
-        /* ========== FOOTER & MISC ========== */
-        .referral-card { border-radius: 1.2rem; padding: 1rem; margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; }
-        footer { text-align: center; color: white; padding: 2rem; font-size: 0.8rem; opacity: 0.8; border-top: 1px solid rgba(255,255,255,0.1); }
-
-        /* Modal Styles */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
-        .modal-overlay.active { display: flex; }
-        .modal-container { background: var(--card-bg); padding: 1.5rem; border-radius: 1.5rem; width: 90%; max-width: 400px; color: var(--text-primary); }
-
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 1.4rem; }
-            .color-palette { top: 0.5rem; left: 0.5rem; scale: 0.8; }
-            .theme-toggle { top: 0.5rem; right: 0.5rem; scale: 0.8; }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; margin-bottom: 5px; font-size: 0.8rem; font-weight: 600; }
+        .input-group input { 
+            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; 
+            outline: none; font-size: 1rem; background: #f8fafc;
         }
+        .auth-btn { 
+            width: 100%; padding: 12px; background: var(--btn-success); color: white; 
+            border: none; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 1rem;
+        }
+        .close-btn { position: absolute; top: 15px; right: 15px; cursor: pointer; font-size: 22px; color: #ff4d4d; }
+        
+        footer { text-align: center; color: white; padding: 40px; opacity: 0.6; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
-    <div class="color-palette">
-        <div class="color-btn color-default active" data-theme="default" style="background: #302b63;"></div>
-        <div class="color-btn color-sunset" data-theme="sunset" style="background: #e65c00;"></div>
-        <div class="color-btn color-ocean" data-theme="ocean" style="background: #0284c7;"></div>
-        <div class="color-btn color-forest" data-theme="forest" style="background: #15803d;"></div>
-        <div class="color-btn color-royal" data-theme="royal" style="background: #9333ea;"></div>
-    </div>
-
-    <div class="theme-toggle" id="themeToggleBtn">
-        <i class="fas fa-moon" id="themeIcon"></i> <span id="themeText">डार्क मोड</span>
-    </div>
-
     <div class="container">
         <div class="hero">
-            <h1><i class="fas fa-laptop-code"></i> माझी CSC सेवा - सिंधुदुर्ग</h1>
-            <p>ओरोस • कणकवली • कुडाळ | १० प्रमुख डिजिटल सेवा केंद्र</p>
-        </div>
-
-        <div class="referral-card">
-            <div>
-                <h3 style="color: var(--text-primary); font-size: 1rem;"><i class="fas fa-share-alt"></i> रेफरल लिंक</h3>
-                <p style="font-size: 0.75rem; color: var(--text-secondary);">मित्रांना जोडा आणि बोनस मिळवा</p>
-            </div>
-            <div style="display: flex; gap: 5px; background: rgba(0,0,0,0.05); padding: 5px; border-radius: 2rem;">
-                <input type="text" id="refLink" value="https://cscseva.mh.gov.in/ref=SINDHU2026" readonly style="background:none; border:none; padding:0 10px; font-size:0.7rem; color:var(--text-primary); outline:none;">
-                <button onclick="copyLink()" style="background:var(--btn-primary); color:white; border:none; padding:5px 15px; border-radius:2rem; cursor:pointer; font-size:0.7rem;">कॉपी</button>
-            </div>
+            <h1><i class="fas fa-lock"></i> सुरक्षित १०-सेवा पोर्टल</h1>
+            <p>सिंधुदुर्ग डिजिटल सेवा केंद्र | मॅन्युअल पासवर्ड पडताळणी</p>
         </div>
 
         <div class="services-grid">
-            <div class="service-card" onclick="openPopup('dsc')">
-                <div class="icon-large"><i class="fas fa-file-signature"></i></div>
+            <div class="service-card" onclick="triggerAuth('dsc')">
+                <div class="icon-box"><i class="fas fa-file-signature"></i></div>
                 <h3>डिजिटल सिग्नेचर</h3>
-                <p class="service-desc">नवीन नोंदणी व रिन्यूअल</p>
-                <span class="btn-link">कंपन्या पहा</span>
+                <p>लॉगिन आवश्यक</p>
             </div>
-
-            <div class="service-card" onclick="openPopup('pan')">
-                <div class="icon-large"><i class="fas fa-id-card"></i></div>
+            <div class="service-card" onclick="triggerAuth('pan')">
+                <div class="icon-box"><i class="fas fa-id-card"></i></div>
                 <h3>PAN कार्ड सेवा</h3>
-                <p class="service-desc">नवीन पॅन व सुधारणा</p>
-                <span class="btn-link">पोर्टल निवडा</span>
+                <p>लॉगिन आवश्यक</p>
             </div>
-
-            <div class="service-card" onclick="window.open('https://csc.gov.in/', '_blank')">
-                <div class="icon-large"><i class="fas fa-globe"></i></div>
-                <h3>CSC केंद्र सेवा</h3>
-                <p class="service-desc">शासकीय योजना व बिल भरणा</p>
-                <span class="btn-link">CSC पोर्टल</span>
+            <div class="service-card" onclick="triggerAuth('csc')">
+                <div class="icon-box"><i class="fas fa-desktop"></i></div>
+                <h3>CSC डिजिटल सेवा</h3>
+                <p>लॉगिन आवश्यक</p>
             </div>
-
-            <div class="service-card" onclick="window.open('https://uidai.gov.in/', '_blank')">
-                <div class="icon-large"><i class="fas fa-fingerprint"></i></div>
-                <h3>आधार सेवा <span class="demo-badge">Demo</span></h3>
-                <p class="service-desc">नोंदणी व आधार सुधारणा</p>
-                <span class="btn-link">UIDAI</span>
+            <div class="service-card" onclick="triggerAuth('aadhar')">
+                <div class="icon-box"><i class="fas fa-fingerprint"></i></div>
+                <h3>आधार सेवा</h3>
+                <p>लॉगिन आवश्यक</p>
             </div>
-
-            <div class="service-card" onclick="window.open('https://parivahan.gov.in/', '_blank')">
-                <div class="icon-large"><i class="fas fa-car"></i></div>
+            <div class="service-card" onclick="triggerAuth('aaplesarkar')">
+                <div class="icon-box"><i class="fas fa-landmark"></i></div>
+                <h3>आपले सरकार</h3>
+                <p>लॉगिन आवश्यक</p>
+            </div>
+            <div class="service-card" onclick="triggerAuth('bhulekh')">
+                <div class="icon-box"><i class="fas fa-map-marked-alt"></i></div>
+                <h3>महाभूलेख ७/१२</h3>
+                <p>लॉगिन आवश्यक</p>
+            </div>
+            <div class="service-card" onclick="triggerAuth('vahan')">
+                <div class="icon-box"><i class="fas fa-car"></i></div>
                 <h3>वाहन नोंदणी</h3>
-                <p class="service-desc">परवाना, आरसी व चालान</p>
-                <span class="btn-link">परिवहन</span>
+                <p>लॉगिन आवश्यक</p>
             </div>
-
-            <div class="service-card" onclick="alert('बँकिंग सेवा केंद्र लवकरच सुरू होत आहे!')">
-                <div class="icon-large"><i class="fas fa-university"></i></div>
-                <h3>बँकिंग सेवा (BC)</h3>
-                <p class="service-desc">खाते उघडणे व पैसे काढणे</p>
-                <span class="btn-link">माहिती</span>
+            <div class="service-card" onclick="triggerAuth('banking')">
+                <div class="icon-box"><i class="fas fa-university"></i></div>
+                <h3>बँकिंग सेवा</h3>
+                <p>लॉगिन आवश्यक</p>
             </div>
-
-            <div class="service-card" onclick="window.open('https://agriwelfare.gov.in/', '_blank')">
-                <div class="icon-large"><i class="fas fa-tractor"></i></div>
-                <h3>कृषी सेवा</h3>
-                <p class="service-desc">शेतकरी योजना व पीक विमा</p>
-                <span class="btn-link">कृषी पोर्टल</span>
-            </div>
-
-            <div class="service-card" onclick="window.open('https://bhulekh.mahabhumi.gov.in/', '_blank')">
-                <div class="icon-large"><i class="fas fa-map-marked-alt"></i></div>
-                <h3>७/१२ व ८अ उतारा</h3>
-                <p class="service-desc">डिजिटल स्वाक्षरीचा उतारा</p>
-                <span class="btn-link">महाभूलेख</span>
-            </div>
-
-            <div class="service-card" onclick="window.open('https://www.mohfw.gov.in/', '_blank')">
-                <div class="icon-large"><i class="fas fa-heartbeat"></i></div>
-                <h3>आरोग्य सेवा</h3>
-                <p class="service-desc">आयुष्मान भारत व इतर कार्ड्स</p>
-                <span class="btn-link">आरोग्य पोर्टल</span>
-            </div>
-
-            <div class="service-card" onclick="window.open('https://passportindia.gov.in/', '_blank')">
-                <div class="icon-large"><i class="fas fa-passport"></i></div>
+            <div class="service-card" onclick="triggerAuth('passport')">
+                <div class="icon-box"><i class="fas fa-passport"></i></div>
                 <h3>पासपोर्ट सेवा</h3>
-                <p class="service-desc">नवीन पासपोर्ट अर्ज</p>
-                <span class="btn-link">पासपोर्ट</span>
+                <p>लॉगिन आवश्यक</p>
+            </div>
+            <div class="service-card" onclick="triggerAuth('agri')">
+                <div class="icon-box"><i class="fas fa-tractor"></i></div>
+                <h3>कृषी सेवा</h3>
+                <p>लॉगिन आवश्यक</p>
             </div>
         </div>
-
+        
         <footer>
-            <p>© 2026 माझी CSC सेवा | महेश सुतार - सिंधुदुर्ग</p>
-            <p style="font-size: 0.6rem; margin-top: 5px;">HTML5 • CSS3 • JavaScript • Responsive Design</p>
+            <p>© 2026 महेश सुतार - सिंधुदुर्ग | सर्व १० सेवा सुरक्षित आहेत.</p>
         </footer>
     </div>
 
-    <div id="modal" class="modal-overlay">
-        <div class="modal-container">
-            <h3 id="modalTitle" style="margin-bottom: 1rem; border-bottom: 1px solid var(--card-border); padding-bottom: 5px;"></h3>
-            <div id="modalLinks"></div>
-            <button onclick="closePopup()" style="margin-top: 1.5rem; width: 100%; padding: 10px; border-radius: 2rem; border: none; background: var(--btn-primary); color: white; cursor: pointer;">बंद करा</button>
+    <div id="authModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeAuth()">&times;</span>
+            <h3 id="serviceTitle" style="margin-bottom: 20px; color: var(--btn-primary);">सुरक्षित प्रवेश</h3>
+            
+            <div class="input-group">
+                <label>User ID (Manual)</label>
+                <input type="text" id="userInput" placeholder="ID टाईप करा...">
+            </div>
+            
+            <div class="input-group">
+                <label>Password (Manual)</label>
+                <input type="password" id="passInput" placeholder="Password टाईप करा...">
+            </div>
+
+            <button class="auth-btn" onclick="verifyAndOpen()">व्हेरिफाय करा आणि पोर्टल उघडा</button>
+            <p id="errMsg" style="color:red; font-size:0.75rem; margin-top:10px; display:none; text-align:center; font-weight:bold;">❌ चुकीचा ID किंवा Password!</p>
         </div>
     </div>
 
     <script>
-        // थीम चेंज लॉजिक
-        const colorBtns = document.querySelectorAll('.color-btn');
-        colorBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.body.classList.remove('theme-sunset', 'theme-ocean', 'theme-forest', 'theme-royal');
-                const theme = btn.dataset.theme;
-                if(theme !== 'default') document.body.classList.add('theme-' + theme);
-                colorBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-            });
-        });
-
-        // डार्क मोड लॉजिक
-        const toggleBtn = document.getElementById('themeToggleBtn');
-        toggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark');
-            const isDark = document.body.classList.contains('dark');
-            document.getElementById('themeIcon').className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-            document.getElementById('themeText').innerText = isDark ? 'लाइट मोड' : 'डार्क मोड';
-        });
-
-        // मोडल/पॉपअप डेटा
-        const modalData = {
-            dsc: ['eMudhra', 'Capricorn', 'nCode', 'Sify'],
-            pan: ['NSDL (Protean)', 'UTIITSL', 'CSC PAN']
+        // --- सर्व १० सेवांचा मास्टर डेटा (ID/PASS/URL) ---
+        const secureData = {
+            dsc: { id: "mahesh_dsc", pass: "dsc@123", url: "https://www.emudhra.com" },
+            pan: { id: "admin_pan", pass: "pan@456", url: "https://www.utiitsl.com" },
+            csc: { id: "csc_user", pass: "csc@789", url: "https://digitalseva.csc.gov.in" },
+            aadhar: { id: "uidai_auth", pass: "uid@321", url: "https://uidai.gov.in" },
+            aaplesarkar: { id: "maha_user", pass: "maha@111", url: "https://aaplesarkar.maharashtra.gov.in" },
+            bhulekh: { id: "bhu_user", pass: "bhu@712", url: "https://bhulekh.mahabhumi.gov.in" },
+            vahan: { id: "rto_user", pass: "vahan@22", url: "https://parivahan.gov.in" },
+            banking: { id: "bank_bc", pass: "bc@88", url: "https://www.rbi.org.in" },
+            passport: { id: "pass_user", pass: "pass@99", url: "https://passportindia.gov.in" },
+            agri: { id: "agri_user", pass: "agri@55", url: "https://agriwelfare.gov.in" }
         };
 
-        function openPopup(type) {
-            const modal = document.getElementById('modal');
-            document.getElementById('modalTitle').innerText = type.toUpperCase() + ' कंपन्या/पोर्टल';
-            const linksCont = document.getElementById('modalLinks');
-            linksCont.innerHTML = '';
-            
-            modalData[type].forEach(item => {
-                const div = document.createElement('div');
-                div.style.padding = '10px';
-                div.style.borderBottom = '1px solid #eee';
-                div.style.fontSize = '0.9rem';
-                div.innerText = '• ' + item;
-                linksCont.appendChild(div);
-            });
-            modal.classList.add('active');
+        let currentKey = "";
+
+        function triggerAuth(key) {
+            currentKey = key;
+            const titles = {
+                dsc: "डिजिटल सिग्नेचर", pan: "PAN कार्ड", csc: "CSC सेवा", aadhar: "आधार सेवा",
+                aaplesarkar: "आपले सरकार", bhulekh: "महाभूलेख", vahan: "वाहन नोंदणी",
+                banking: "बँकिंग सेवा", passport: "पासपोर्ट सेवा", agri: "कृषी सेवा"
+            };
+            document.getElementById('serviceTitle').innerText = titles[key] + " पडताळणी";
+            document.getElementById('userInput').value = "";
+            document.getElementById('passInput').value = "";
+            document.getElementById('errMsg').style.display = "none";
+            document.getElementById('authModal').style.display = "flex";
         }
 
-        function closePopup() { document.getElementById('modal').classList.remove('active'); }
-        function copyLink() {
-            const copyText = document.getElementById("refLink");
-            copyText.select();
-            navigator.clipboard.writeText(copyText.value);
-            alert("रेफरल लिंक कॉपी झाली!");
+        function closeAuth() { document.getElementById('authModal').style.display = "none"; }
+
+        function verifyAndOpen() {
+            const typedUser = document.getElementById('userInput').value;
+            const typedPass = document.getElementById('passInput').value;
+            const correctData = secureData[currentKey];
+
+            if (typedUser === correctData.id && typedPass === correctData.pass) {
+                alert("पडताळणी यशस्वी!");
+                window.open(correctData.url, '_blank');
+                closeAuth();
+            } else {
+                document.getElementById('errMsg').style.display = "block";
+                // चुकीचा प्रयत्न झाल्यास इनपुट बॉक्स लाल होईल
+                document.getElementById('passInput').style.borderColor = "red";
+            }
         }
+
+        window.onclick = (e) => { if(e.target == document.getElementById('authModal')) closeAuth(); }
     </script>
 </body>
 </html>
