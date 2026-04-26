@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>CSC सेवा | DSC व PAN कार्ड पॉपअप | ग्रीन शॅडो बटणे</title>
+    <title>CSC सेवा | DSC व PAN पॉपअप | 3 नवीन सेवा</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts -->
@@ -31,7 +31,7 @@
             --referral-border: #ffe3a3;
             --referral-text: #b45309;
             --card-border: #e9edf2;
-            --card-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.08);
+            --card-shadow: 0 8px 16px -6px rgba(0, 0, 0, 0.06);
             --btn-primary: #1e3a5f;
             --btn-primary-hover: #0f2b3f;
             --feature-bg: #fefaf5;
@@ -47,7 +47,6 @@
             --modal-content-bg: #ffffff;
             --company-item-hover: #f1f5f9;
             --close-btn-bg: #e2e8f0;
-            /* Green shadow variable */
             --btn-green-shadow: 0 4px 12px rgba(34, 197, 94, 0.35);
             --btn-green-shadow-hover: 0 6px 18px rgba(34, 197, 94, 0.55);
         }
@@ -67,7 +66,7 @@
             --referral-border: #7b5e3b;
             --referral-text: #fbbf24;
             --card-border: #334155;
-            --card-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.4);
+            --card-shadow: 0 8px 16px -6px rgba(0, 0, 0, 0.4);
             --btn-primary: #3b82f6;
             --btn-primary-hover: #2563eb;
             --feature-bg: #0f172a;
@@ -92,13 +91,15 @@
             background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
             color: var(--text-primary);
             line-height: 1.5;
-            padding: 1.5rem;
+            padding: 1rem;
             min-height: 100vh;
         }
 
+        /* कंटेनरचा साइज कमी केला - max-width कमी, padding कमी */
         .container {
-            max-width: 1300px;
+            max-width: 1100px;
             margin: 0 auto;
+            padding: 0 0.5rem;
         }
 
         /* ---------- CENTERED HEADINGS ---------- */
@@ -115,34 +116,40 @@
         }
         .referral-text h2 {
             justify-content: center;
+            font-size: 1.4rem;
         }
         .referral-text p {
             text-align: center;
+            font-size: 0.85rem;
         }
         .stats-mini {
             justify-content: center;
         }
         .feature-title {
             justify-content: center;
+            font-size: 1.2rem;
         }
         .service-card h3 {
             text-align: center;
+            font-size: 1.3rem;
         }
         .service-desc {
             text-align: center;
+            font-size: 0.85rem;
         }
         .icon-large {
             margin-left: auto;
             margin-right: auto;
+            width: 50px;
+            height: 50px;
+            font-size: 2rem;
         }
         .btn-link {
             margin: 0 auto;
             display: inline-flex;
             width: fit-content;
-        }
-        .service-card .btn-link {
-            display: flex;
-            justify-content: center;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
         }
         .feature-link {
             justify-content: center;
@@ -150,27 +157,30 @@
         }
         .info-note p {
             text-align: center;
+            font-size: 0.8rem;
         }
         footer {
             text-align: center;
+            font-size: 0.7rem;
         }
 
         /* Theme toggle button */
         .theme-toggle {
             position: fixed;
-            top: 1.2rem;
-            right: 1.5rem;
+            top: 1rem;
+            right: 1rem;
             z-index: 1000;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 3rem;
-            padding: 0.55rem 1rem;
+            border-radius: 2rem;
+            padding: 0.4rem 0.8rem;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--btn-green-shadow);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             font-weight: 600;
+            font-size: 0.8rem;
             backdrop-filter: blur(4px);
             color: var(--text-primary);
         }
@@ -178,15 +188,16 @@
             transform: scale(1.02);
             background: var(--btn-primary);
             color: white;
+            box-shadow: var(--btn-green-shadow-hover);
         }
 
-        /* Hero Section */
+        /* Hero Section - size reduced */
         .hero {
             background: linear-gradient(105deg, var(--hero-bg-start) 0%, var(--hero-bg-end) 100%);
-            border-radius: 2rem;
-            padding: 2rem 2rem 2rem 2.5rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.15);
             color: var(--hero-text);
             position: relative;
             overflow: hidden;
@@ -194,103 +205,71 @@
         }
         .hero::before {
             content: "🇮🇳";
-            font-size: 180px;
+            font-size: 120px;
             opacity: 0.08;
             position: absolute;
-            right: -20px;
-            bottom: -40px;
+            right: -15px;
+            bottom: -30px;
             pointer-events: none;
         }
         .hero h1 {
-            font-size: 2.3rem;
+            font-size: 1.6rem;
             font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
             flex-wrap: wrap;
             justify-content: center;
         }
         .hero h1 i {
             background: #ffb347;
-            padding: 10px;
+            padding: 6px;
             border-radius: 50%;
-            font-size: 1.6rem;
+            font-size: 1.2rem;
             color: #1e2a3e;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
         }
         .hero .tagline {
-            font-size: 1rem;
-            margin-top: 0.75rem;
-            opacity: 0.9;
-            text-align: center;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
         }
 
-        /* Referral Card */
+        /* Referral Card - compact */
         .referral-card {
             background: var(--referral-bg);
-            backdrop-filter: blur(4px);
-            border-radius: 1.5rem;
-            padding: 1.5rem 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 12px 25px -12px rgba(0, 0, 0, 0.15);
+            border-radius: 1.2rem;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 18px -10px rgba(0, 0, 0, 0.1);
             border: 1px solid var(--referral-border);
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            gap: 1.5rem;
-        }
-        .referral-text {
-            flex: 2;
-            text-align: center;
+            gap: 1rem;
         }
         .referral-text h2 {
-            font-size: 1.7rem;
-            font-weight: 700;
-            color: var(--referral-text);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            justify-content: center;
+            font-size: 1.3rem;
         }
         .referral-text p {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin-top: 8px;
-            text-align: center;
+            font-size: 0.75rem;
         }
         .referral-link-box {
-            flex: 1.2;
-            background: var(--primary-bg);
-            border-radius: 2rem;
-            padding: 0.8rem 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            border: 1px solid var(--referral-border);
+            flex: 1;
+            padding: 0.5rem 1rem;
         }
         .referral-link-box input {
-            border: none;
-            background: transparent;
-            font-size: 0.9rem;
-            font-weight: 500;
-            width: 100%;
-            color: var(--text-primary);
-            outline: none;
-            font-family: monospace;
-            text-align: center;
+            font-size: 0.75rem;
+        }
+        .copy-btn {
+            padding: 5px 10px;
+            font-size: 0.7rem;
         }
         .stats-mini {
-            display: flex;
-            gap: 1rem;
-            font-size: 0.85rem;
-            color: var(--referral-text);
-            justify-content: center;
-            margin-top: 8px;
+            gap: 0.8rem;
+            font-size: 0.7rem;
         }
 
-        /* ---------- BUTTON GREEN SHADOW (ADDED) ---------- */
+        /* Button Green Shadow - all buttons */
         .btn-link, .copy-btn, .company-link-btn, .modal-close, .visit-icon, .theme-toggle {
             box-shadow: var(--btn-green-shadow);
             transition: all 0.25s ease;
@@ -299,39 +278,28 @@
             box-shadow: var(--btn-green-shadow-hover);
             transform: translateY(-2px);
         }
-        /* Specific override for copy-btn and others to keep consistent */
-        .copy-btn {
-            box-shadow: var(--btn-green-shadow);
-        }
-        .copy-btn:hover {
-            box-shadow: var(--btn-green-shadow-hover);
-        }
         .company-link-btn {
             box-shadow: 0 2px 6px rgba(34, 197, 94, 0.2);
         }
         .company-link-btn:hover {
             box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
         }
-        /* Visit icon also gets green shadow */
         .visit-icon {
             display: inline-block;
             box-shadow: var(--btn-green-shadow);
         }
-        .visit-icon:hover {
-            box-shadow: var(--btn-green-shadow-hover);
-        }
 
-        /* Services Grid */
+        /* Services Grid - 6 कार्ड्स साठी (3 जुने + 3 नवीन) */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.8rem;
-            margin: 2rem 0 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0 1.5rem;
         }
         .service-card {
             background: var(--card-bg);
-            border-radius: 1.5rem;
-            padding: 1.6rem;
+            border-radius: 1.2rem;
+            padding: 1rem;
             transition: all 0.25s ease;
             box-shadow: var(--card-shadow);
             border: 1px solid var(--card-border);
@@ -339,340 +307,211 @@
             text-align: center;
         }
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px -10px rgba(0, 0, 0, 0.15);
             border-color: #f3b33d;
         }
-        .icon-large {
-            font-size: 2.5rem;
-            background: var(--icon-bg);
-            width: 65px;
-            height: 65px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 1.2rem;
-            margin-bottom: 1.2rem;
-            color: var(--icon-color);
-            margin-left: auto;
-            margin-right: auto;
-        }
         .service-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
         }
         .service-desc {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 1.2rem;
-            text-align: center;
+            font-size: 0.75rem;
+            margin-bottom: 0.8rem;
         }
         .btn-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--btn-primary);
-            color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 2rem;
-            font-weight: 500;
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: 0.25s;
-            border: none;
-            cursor: pointer;
-            margin: 0 auto;
-        }
-        .btn-link:hover {
-            background: var(--btn-primary-hover);
-            gap: 12px;
+            font-size: 0.7rem;
+            padding: 0.4rem 0.8rem;
         }
 
-        /* Double Feature */
+        /* Double Feature - compact */
         .double-feature {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.8rem;
-            margin-top: 1rem;
-            margin-bottom: 2.5rem;
+            gap: 1.2rem;
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
         }
         .feature-block {
             flex: 1;
-            background: var(--feature-bg);
-            border-radius: 1.5rem;
-            padding: 1.6rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            border: 1px solid var(--feature-border);
-            transition: all 0.2s;
-            text-align: center;
-        }
-        .feature-block:hover {
-            border-color: #f5b042;
-            transform: translateY(-3px);
+            border-radius: 1.2rem;
+            padding: 1rem;
         }
         .feature-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-            justify-content: center;
+            font-size: 1.1rem;
+            gap: 8px;
+            margin-bottom: 0.6rem;
         }
         .feature-link {
-            background: var(--card-bg);
-            border-radius: 1rem;
-            padding: 0.7rem 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            border: 1px solid var(--card-border);
+            padding: 0.5rem 0.8rem;
+            font-size: 0.7rem;
         }
         .feature-link a {
-            text-decoration: none;
-            font-weight: 600;
-            color: var(--link-color);
-            word-break: break-all;
+            font-size: 0.7rem;
         }
         .visit-icon {
-            background: var(--icon-bg);
-            padding: 6px 12px;
-            border-radius: 2rem;
-            transition: 0.25s;
-            cursor: pointer;
-            color: var(--text-primary);
-            font-size: 0.85rem;
-            font-weight: 500;
+            padding: 4px 8px;
+            font-size: 0.7rem;
         }
-        .visit-icon:hover {
-            background: var(--btn-primary);
-            color: white;
-        }
-        footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding: 1.5rem;
-            border-top: 1px solid var(--footer-border);
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-        .info-note {
-            background: var(--info-bg);
-            border-radius: 1.2rem;
-            padding: 1rem 1.5rem;
-            margin: 0.5rem 0 1rem;
-            border-left: 4px solid var(--link-color);
-            text-align: center;
-        }
-        .toast-msg {
-            visibility: hidden;
-            min-width: 180px;
-            background-color: #2d6a4f;
-            color: #fff;
-            text-align: center;
-            border-radius: 2rem;
-            padding: 8px 16px;
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.9rem;
-            z-index: 999;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .toast-msg.show {
-            visibility: visible;
-            opacity: 1;
+        .feature-block p {
+            font-size: 0.65rem;
         }
 
-        /* Popup Modal Styles */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--modal-bg);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(4px);
+        .info-note {
+            border-radius: 1rem;
+            padding: 0.6rem 1rem;
+            margin: 0.5rem 0 1rem;
+            font-size: 0.7rem;
         }
-        .modal-overlay.active {
-            display: flex;
+        footer {
+            margin-top: 1.5rem;
+            padding: 1rem;
         }
+        .toast-msg {
+            font-size: 0.8rem;
+            padding: 6px 12px;
+        }
+
+        /* Modal */
         .modal-container {
-            background: var(--modal-content-bg);
-            border-radius: 1.8rem;
-            width: 90%;
-            max-width: 500px;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 25px 40px rgba(0,0,0,0.3);
-            animation: modalFadeIn 0.2s ease-out;
-            border: 1px solid var(--card-border);
-        }
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+            max-width: 420px;
         }
         .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.3rem 1.8rem;
-            border-bottom: 1px solid var(--card-border);
+            padding: 0.8rem 1.2rem;
         }
         .modal-header h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-align: center;
-            margin: 0 auto;
-        }
-        .modal-close {
-            background: var(--close-btn-bg);
-            border: none;
-            font-size: 1.3rem;
-            cursor: pointer;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-primary);
-            transition: 0.25s;
-        }
-        .modal-close:hover {
-            background: #ef4444;
-            color: white;
+            font-size: 1.2rem;
         }
         .company-list {
-            padding: 1rem 1.5rem 1.8rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
+            padding: 0.8rem 1.2rem 1.2rem;
+            gap: 0.6rem;
         }
         .company-link-btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 1.2rem;
-            padding: 0.9rem 1.2rem;
-            text-decoration: none;
-            color: var(--text-primary);
-            font-weight: 600;
-            transition: all 0.25s;
-            cursor: pointer;
+            padding: 0.6rem 1rem;
+            font-size: 0.8rem;
         }
-        .company-link-btn:hover {
-            background: var(--company-item-hover);
-            border-color: var(--link-color);
-            transform: translateX(5px);
+
+        @media (max-width: 700px) {
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 0.8rem;
+            }
+            .hero h1 { font-size: 1.3rem; }
+            .referral-card { flex-direction: column; }
         }
-        .company-link-btn i {
-            color: var(--link-color);
-            font-size: 1.1rem;
-        }
-        .company-link-btn span {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        @media (max-width: 550px) {
-            .modal-container { width: 95%; }
-            .modal-header h3 { font-size: 1.2rem; }
+
+        /* Demo link style */
+        .demo-badge {
+            display: inline-block;
+            background: #22c55e20;
+            color: #22c55e;
+            font-size: 0.6rem;
+            padding: 2px 6px;
+            border-radius: 20px;
+            margin-left: 6px;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
-    <!-- Theme Toggle Button (with green shadow too) -->
+    <!-- Theme Toggle Button -->
     <div class="theme-toggle" id="themeToggleBtn">
         <i class="fas fa-moon" id="themeIcon"></i>
-        <span id="themeText">डार्क मोड</span>
+        <span id="themeText">डार्क</span>
     </div>
 
     <div class="container">
         <!-- Hero -->
         <div class="hero">
             <h1><i class="fas fa-laptop-code"></i> माझी CSC सेवा</h1>
-            <div class="tagline">ग्रामीण डिजिटल सेवा केंद्र | सुरक्षित, वेगवान आणि विश्वासार्ह सेवा<br>ई-गव्हर्नन्स तुमच्या दारी</div>
+            <div class="tagline">ग्रामीण डिजिटल सेवा केंद्र | ई-गव्हर्नन्स तुमच्या दारी</div>
         </div>
 
         <!-- Referral Section -->
         <div class="referral-card">
             <div class="referral-text">
-                <h2><i class="fas fa-user-friends"></i> रेफरल लिंक <span style="font-size: 1rem;">(Refer & Earn)</span></h2>
-                <p>तुमच्या मित्रांना सीएससी सेवांसाठी आमंत्रित करा आणि विशेष सवलत मिळवा. खालील लिंक कॉपी करून शेअर करा.</p>
-                <div class="stats-mini"><span><i class="fas fa-chart-line"></i> आजचे रेफरल: 142+</span><span><i class="fas fa-trophy"></i> तुमचे बोनस: ₹50 प्रति रेफर</span></div>
+                <h2><i class="fas fa-user-friends"></i> रेफरल लिंक</h2>
+                <p>मित्रांना आमंत्रित करा व बोनस मिळवा</p>
+                <div class="stats-mini"><span><i class="fas fa-chart-line"></i> 142+ रेफरल</span><span><i class="fas fa-trophy"></i> ₹50 प्रति</span></div>
             </div>
             <div class="referral-link-box">
-                <input type="text" id="referralLinkInput" readonly value="https://cscseva.mh.gov.in/refer?ref=CSCMH2312&utm_source=partner" />
+                <input type="text" id="referralLinkInput" readonly value="https://cscseva.mh.gov.in/refer?ref=CSCMH2312" />
                 <button class="copy-btn" id="copyReferralBtn"><i class="fas fa-copy"></i> कॉपी</button>
             </div>
         </div>
 
-        <!-- Services Grid -->
+        <!-- Services Grid - 6 कार्ड्स (3 जुने + 3 नवीन डेमो लिंकसह) -->
         <div class="services-grid">
             <!-- DSC CARD -->
             <div class="service-card" id="dscCard">
                 <div class="icon-large"><i class="fas fa-digital-tiling"></i></div>
                 <h3>डिजिटल सिग्नेचर (DSC)</h3>
-                <div class="service-desc">क्लास 2 / क्लास 3 DSC, नवीन नोंदणी, रिन्यूअल. कंपनीनुसार लिंक्स साठी क्लिक करा.</div>
-                <button class="btn-link" id="dscPopupBtn"><i class="fas fa-building"></i> DSC कंपन्या पहा</button>
+                <div class="service-desc">क्लास 2/3 DSC, नोंदणी, रिन्यूअल</div>
+                <button class="btn-link" id="dscPopupBtn"><i class="fas fa-building"></i> DSC कंपन्या</button>
             </div>
             <!-- PAN CARD -->
             <div class="service-card" id="panCardCard">
                 <div class="icon-large"><i class="fas fa-id-card"></i></div>
                 <h3>PAN कार्ड नोंदणी</h3>
-                <div class="service-desc">नवीन पॅन कार्ड, सुधारणा, डुप्लिकेट, ई-पॅन. कंपनीनुसार लिंक्स साठी क्लिक करा.</div>
-                <button class="btn-link" id="panPopupBtn"><i class="fas fa-building"></i> PAN कंपन्या पहा</button>
+                <div class="service-desc">नवीन पॅन, सुधारणा, ई-पॅन</div>
+                <button class="btn-link" id="panPopupBtn"><i class="fas fa-building"></i> PAN कंपन्या</button>
             </div>
             <!-- CSC Services -->
             <div class="service-card" id="cscServiceCard">
                 <div class="icon-large"><i class="fas fa-globe"></i></div>
                 <h3>CSC केंद्र सेवा</h3>
-                <div class="service-desc">CSC कॉमन सर्व्हिस सेंटर मार्फत शासकीय योजना, सर्टिफिकेट.</div>
-                <a href="#" class="btn-link" id="cscMainLinkBtn"><i class="fas fa-external-link-alt"></i> CSC पोर्टलवर जा</a>
+                <div class="service-desc">शासकीय योजना, बिल भरणा</div>
+                <a href="#" class="btn-link" id="cscMainLinkBtn"><i class="fas fa-external-link-alt"></i> CSC पोर्टल</a>
+            </div>
+
+            <!-- नवीन कार्ड 1: आधार सेवा (Demo Link) -->
+            <div class="service-card" id="aadharCard">
+                <div class="icon-large"><i class="fas fa-fingerprint"></i></div>
+                <h3>आधार सेवा <span class="demo-badge">Demo</span></h3>
+                <div class="service-desc">आधार नोंदणी, सुधारणा, ई-केवायसी</div>
+                <a href="#" class="btn-link demo-link" data-url="https://uidai.gov.in/" target="_blank"><i class="fas fa-external-link-alt"></i> आधार पोर्टल</a>
+            </div>
+
+            <!-- नवीन कार्ड 2: वाहन नोंदणी (Demo Link) -->
+            <div class="service-card" id="vehicleCard">
+                <div class="icon-large"><i class="fas fa-car"></i></div>
+                <h3>वाहन नोंदणी <span class="demo-badge">Demo</span></h3>
+                <div class="service-desc">परवाना, आरसी, चालान तपासणी</div>
+                <a href="#" class="btn-link demo-link" data-url="https://parivahan.gov.in/" target="_blank"><i class="fas fa-external-link-alt"></i> Parivahan सेवा</a>
+            </div>
+
+            <!-- नवीन कार्ड 3: शिष्यवृत्ती सेवा (Demo Link) -->
+            <div class="service-card" id="scholarshipCard">
+                <div class="icon-large"><i class="fas fa-graduation-cap"></i></div>
+                <h3>शिष्यवृत्ती सेवा <span class="demo-badge">Demo</span></h3>
+                <div class="service-desc">विद्यार्थी शिष्यवृत्ती, अर्ज</div>
+                <a href="#" class="btn-link demo-link" data-url="https://scholarships.gov.in/" target="_blank"><i class="fas fa-external-link-alt"></i> शिष्यवृत्ती पोर्टल</a>
             </div>
         </div>
 
         <!-- CSC Link + Aaple Sarkar -->
         <div class="double-feature">
             <div class="feature-block" id="cscLinkBlock">
-                <div class="feature-title"><i class="fas fa-network-wired"></i> CSC लिंक (CSC Link)</div>
-                <div class="feature-link"><span><i class="fas fa-link"></i> अधिकृत पोर्टल :</span><a href="#" id="cscDirectLink">https://csc.gov.in <i class="fas fa-up-right-from-square"></i></a><span class="visit-icon" id="visitCSCBtn">भेट द्या →</span></div>
-                <p style="margin-top:12px; font-size:0.8rem;">CSC ई-सेवा, डिजीलॉकर, कौशल्य विकास.</p>
+                <div class="feature-title"><i class="fas fa-network-wired"></i> CSC लिंक</div>
+                <div class="feature-link"><span><i class="fas fa-link"></i></span><a href="#" id="cscDirectLink">csc.gov.in <i class="fas fa-up-right-from-square"></i></a><span class="visit-icon" id="visitCSCBtn">भेट द्या</span></div>
+                <p>CSC ई-सेवा, डिजीलॉकर</p>
             </div>
             <div class="feature-block" id="aapleSarkarBlock">
-                <div class="feature-title"><i class="fas fa-landmark"></i> आपले सरकार (Aaple Sarkar)</div>
-                <div class="feature-link"><span><i class="fas fa-handshake"></i> महाराष्ट्र सरकार पोर्टल :</span><a href="#" id="aapleSarkarLink">https://aaplesarkar.maharashtra.gov.in <i class="fas fa-up-right-from-square"></i></a><span class="visit-icon" id="visitAapleBtn">भेट द्या →</span></div>
-                <p style="margin-top:12px; font-size:0.8rem;">शासनाच्या विविध योजना, अर्ज, सेवा पुरवठा.</p>
+                <div class="feature-title"><i class="fas fa-landmark"></i> आपले सरकार</div>
+                <div class="feature-link"><span><i class="fas fa-handshake"></i></span><a href="#" id="aapleSarkarLink">aaplesarkar.maharashtra.gov.in <i class="fas fa-up-right-from-square"></i></a><span class="visit-icon" id="visitAapleBtn">भेट द्या</span></div>
+                <p>महाराष्ट्र शासन योजना</p>
             </div>
         </div>
-        <div class="info-note"><p><i class="fas fa-info-circle"></i> ✨ DSC आणि PAN कार्ड बटणावर क्लिक केल्यास अनुक्रमे DSC प्रदाता आणि PAN कार्ड नोंदणी कंपन्यांची पॉपअप यादी दिसेल. प्रत्येक कंपनीच्या लिंकवर क्लिक केल्यावर नवीन टॅबमध्ये अधिकृत वेबसाइट उघडेल.</p></div>
-        <footer><i class="fas fa-chalkboard-user"></i> माझी CSC सेवा | डिजिटल इंडियाचा भाग | सर्व हक्क राखीव © 2025</footer>
+        
+        <div class="info-note"><p><i class="fas fa-info-circle"></i> ✨ DSC / PAN बटणावर क्लिक करून कंपन्या पहा. नवीन 3 सेवा (आधार, वाहन, शिष्यवृत्ती) डेमो लिंकसह.</p></div>
+        <footer><i class="fas fa-chalkboard-user"></i> माझी CSC सेवा | डिजिटल इंडिया | सर्व हक्क राखीव © 2025</footer>
     </div>
 
     <!-- POPUP MODAL for DSC Companies -->
     <div id="dscModal" class="modal-overlay">
         <div class="modal-container">
             <div class="modal-header">
-                <h3><i class="fas fa-digital-tiling"></i> DSC नोंदणी कंपन्या</h3>
+                <h3><i class="fas fa-digital-tiling"></i> DSC कंपन्या</h3>
                 <button class="modal-close" id="closeDscModalBtn"><i class="fas fa-times"></i></button>
             </div>
             <div class="company-list" id="dscCompanyList"></div>
@@ -683,7 +522,7 @@
     <div id="panModal" class="modal-overlay">
         <div class="modal-container">
             <div class="modal-header">
-                <h3><i class="fas fa-id-card"></i> PAN कार्ड नोंदणी कंपन्या</h3>
+                <h3><i class="fas fa-id-card"></i> PAN कंपन्या</h3>
                 <button class="modal-close" id="closePanModalBtn"><i class="fas fa-times"></i></button>
             </div>
             <div class="company-list" id="panCompanyList"></div>
@@ -696,19 +535,17 @@
         // DSC Companies
         const dscCompanies = [
             { name: "eMudhra (ई-मुद्रा)", url: "https://www.emudhra.com/dsc" },
-            { name: "nCode Solutions (nCode)", url: "https://www.ncode.in/digital-signature-certificate" },
+            { name: "nCode Solutions", url: "https://www.ncode.in/digital-signature-certificate" },
             { name: "Sify Technologies", url: "https://www.sifytech.com/digital-signature" },
-            { name: "Capricorn (पंथ नीलकंठ)", url: "https://www.capricorn.co.in/dsc.aspx" },
-            { name: "IDRBT (सीए सीएफ)", url: "https://www.idrbt.ac.in/dsc" },
-            { name: "eSign (CSC eSign)", url: "https://www.csccloud.in/esign" }
+            { name: "Capricorn", url: "https://www.capricorn.co.in/dsc.aspx" },
+            { name: "eSign (CSC)", url: "https://www.csccloud.in/esign" }
         ];
 
         // PAN Companies
         const panCompanies = [
-            { name: "NSDL e-Governance (प्रोटीन)", url: "https://www.onlineservices.nsdl.com/paam/endUserRegister.html" },
-            { name: "UTIITSL (PAN नोंदणी)", url: "https://www.utiitsl.com/utiitsl_web/pan/index.jsp" },
-            { name: "Protean (माजी NSDL)", url: "https://www.proteantech.in/pan-services" },
-            { name: "Tata Consultancy Services (TCS PAN)", url: "https://www.tcs.com/pan-card-services" },
+            { name: "NSDL e-Governance", url: "https://www.onlineservices.nsdl.com/paam/endUserRegister.html" },
+            { name: "UTIITSL", url: "https://www.utiitsl.com/utiitsl_web/pan/index.jsp" },
+            { name: "Protean", url: "https://www.proteantech.in/pan-services" },
             { name: "CSC PAN सेवा", url: "https://csc.gov.in/panCardApplication" }
         ];
 
@@ -733,8 +570,7 @@
                 linkBtn.innerHTML = `<span><i class="fas fa-building"></i> ${company.name}</span><i class="fas fa-external-link-alt"></i>`;
                 linkBtn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    const targetUrl = linkBtn.getAttribute('data-url');
-                    if (targetUrl) window.open(targetUrl, '_blank');
+                    window.open(linkBtn.getAttribute('data-url'), '_blank');
                 });
                 container.appendChild(linkBtn);
             });
@@ -757,7 +593,7 @@
             }
         });
 
-        // Card clicks
+        // Card clicks for DSC/PAN modals
         document.getElementById('dscCard').addEventListener('click', (e) => {
             if (e.target.tagName !== 'BUTTON' && !e.target.closest('.btn-link')) {
                 populateCompanyList(dscCompanyList, dscCompanies);
@@ -793,25 +629,55 @@
         aapleLink.addEventListener('click', (e) => { e.preventDefault(); openAaple(); });
         visitAaple.addEventListener('click', openAaple);
         
+        // नवीन 3 कार्ड्सच्या डेमो लिंक्स
+        const demoLinks = document.querySelectorAll('.demo-link');
+        demoLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const url = link.getAttribute('data-url');
+                if (url) window.open(url, '_blank');
+            });
+        });
+        
+        // नवीन कार्ड्सवर क्लिक केल्यास सुद्धा लिंक उघडा
+        const aadharCard = document.getElementById('aadharCard');
+        const vehicleCard = document.getElementById('vehicleCard');
+        const scholarshipCard = document.getElementById('scholarshipCard');
+        
+        function openAadhar() { window.open('https://uidai.gov.in/', '_blank'); }
+        function openVehicle() { window.open('https://parivahan.gov.in/', '_blank'); }
+        function openScholarship() { window.open('https://scholarships.gov.in/', '_blank'); }
+        
+        aadharCard.addEventListener('click', (e) => {
+            if (e.target.tagName !== 'A' && !e.target.closest('a')) openAadhar();
+        });
+        vehicleCard.addEventListener('click', (e) => {
+            if (e.target.tagName !== 'A' && !e.target.closest('a')) openVehicle();
+        });
+        scholarshipCard.addEventListener('click', (e) => {
+            if (e.target.tagName !== 'A' && !e.target.closest('a')) openScholarship();
+        });
+        
+        // Existing CSC card click
+        document.getElementById('cscServiceCard').addEventListener('click', (e) => {
+            if(e.target.tagName !== 'A' && !e.target.closest('a')) window.open('https://csc.gov.in/', '_blank');
+        });
+        
         // Theme Toggle
         const toggleBtn = document.getElementById('themeToggleBtn');
         const themeIconSpan = document.getElementById('themeIcon');
         const themeTextSpan = document.getElementById('themeText');
         const savedTheme = localStorage.getItem('csc_theme');
-        if (savedTheme === 'dark') { document.body.classList.add('dark'); themeIconSpan.className = 'fas fa-sun'; themeTextSpan.innerText = 'लाइट मोड'; }
-        else { themeIconSpan.className = 'fas fa-moon'; themeTextSpan.innerText = 'डार्क मोड'; }
+        if (savedTheme === 'dark') { document.body.classList.add('dark'); themeIconSpan.className = 'fas fa-sun'; themeTextSpan.innerText = 'लाइट'; }
+        else { themeIconSpan.className = 'fas fa-moon'; themeTextSpan.innerText = 'डार्क'; }
         toggleBtn.addEventListener('click', () => {
             if (document.body.classList.contains('dark')) {
                 document.body.classList.remove('dark'); localStorage.setItem('csc_theme', 'light');
-                themeIconSpan.className = 'fas fa-moon'; themeTextSpan.innerText = 'डार्क मोड';
+                themeIconSpan.className = 'fas fa-moon'; themeTextSpan.innerText = 'डार्क';
             } else {
                 document.body.classList.add('dark'); localStorage.setItem('csc_theme', 'dark');
-                themeIconSpan.className = 'fas fa-sun'; themeTextSpan.innerText = 'लाइट मोड';
+                themeIconSpan.className = 'fas fa-sun'; themeTextSpan.innerText = 'लाइट';
             }
-        });
-        
-        document.getElementById('cscServiceCard').addEventListener('click', (e) => {
-            if(e.target.tagName !== 'A' && !e.target.closest('a')) window.open('https://csc.gov.in/', '_blank');
         });
     </script>
 </body>
