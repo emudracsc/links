@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>CSC सेवा | डार्क/लाइट थीमसह</title>
+    <title>CSC सेवा | DSC कंपन्या पॉपअप</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -43,6 +43,10 @@
             --copy-btn-bg: #d97706;
             --copy-btn-hover: #b45309;
             --link-color: #c2410c;
+            --modal-bg: rgba(0,0,0,0.6);
+            --modal-content-bg: #ffffff;
+            --company-item-hover: #f1f5f9;
+            --close-btn-bg: #e2e8f0;
         }
 
         /* ----- DARK THEME ----- */
@@ -72,6 +76,10 @@
             --copy-btn-bg: #d97706;
             --copy-btn-hover: #f59e0b;
             --link-color: #fbbf24;
+            --modal-bg: rgba(0,0,0,0.8);
+            --modal-content-bg: #1e293b;
+            --company-item-hover: #334155;
+            --close-btn-bg: #334155;
         }
 
         body {
@@ -88,7 +96,7 @@
             margin: 0 auto;
         }
 
-        /* Theme toggle button floating */
+        /* Theme toggle button */
         .theme-toggle {
             position: fixed;
             top: 1.2rem;
@@ -105,11 +113,7 @@
             gap: 8px;
             font-weight: 600;
             backdrop-filter: blur(4px);
-            transition: all 0.2s;
             color: var(--text-primary);
-        }
-        .theme-toggle i {
-            font-size: 1.2rem;
         }
         .theme-toggle:hover {
             transform: scale(1.02);
@@ -198,7 +202,6 @@
             align-items: center;
             justify-content: space-between;
             gap: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             border: 1px solid var(--referral-border);
         }
         .referral-link-box input {
@@ -293,13 +296,14 @@
             font-size: 0.85rem;
             transition: 0.2s;
             border: none;
+            cursor: pointer;
         }
         .btn-link:hover {
             background: var(--btn-primary-hover);
             gap: 12px;
         }
 
-        /* Double Feature (CSC link + Aaple Sarkar) */
+        /* Double Feature */
         .double-feature {
             display: flex;
             flex-wrap: wrap;
@@ -371,7 +375,6 @@
             border-radius: 1.2rem;
             padding: 1rem 1.5rem;
             margin: 0.5rem 0 1rem;
-            color: var(--text-primary);
             border-left: 4px solid var(--link-color);
         }
         .toast-msg {
@@ -390,50 +393,143 @@
             z-index: 999;
             opacity: 0;
             transition: opacity 0.3s;
-            box-shadow: 0 5px 12px rgba(0,0,0,0.2);
         }
         .toast-msg.show {
             visibility: visible;
             opacity: 1;
         }
 
-        @media (max-width: 700px) {
-            body { padding: 1rem; }
-            .hero h1 { font-size: 1.6rem; }
-            .referral-card { flex-direction: column; align-items: stretch; }
-            .theme-toggle { top: 0.8rem; right: 1rem; padding: 0.4rem 0.8rem; font-size: 0.8rem; }
+        /* ---------- POPUP MODAL STYLES ---------- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--modal-bg);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-container {
+            background: var(--modal-content-bg);
+            border-radius: 1.8rem;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 40px rgba(0,0,0,0.3);
+            animation: modalFadeIn 0.2s ease-out;
+            border: 1px solid var(--card-border);
+        }
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.3rem 1.8rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        .modal-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .modal-close {
+            background: var(--close-btn-bg);
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            transition: 0.2s;
+        }
+        .modal-close:hover {
+            background: #ef4444;
+            color: white;
+        }
+        .company-list {
+            padding: 1rem 1.5rem 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        .company-link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 1.2rem;
+            padding: 0.9rem 1.2rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .company-link-btn:hover {
+            background: var(--company-item-hover);
+            border-color: var(--link-color);
+            transform: translateX(5px);
+        }
+        .company-link-btn i {
+            color: var(--link-color);
+            font-size: 1.1rem;
+        }
+        .company-link-btn span {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        @media (max-width: 550px) {
+            .modal-container { width: 95%; }
+            .modal-header h3 { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Dark/Light Theme Toggle Button -->
+    <!-- Theme Toggle Button -->
     <div class="theme-toggle" id="themeToggleBtn">
         <i class="fas fa-moon" id="themeIcon"></i>
         <span id="themeText">डार्क मोड</span>
     </div>
 
     <div class="container">
-        <!-- Hero Section -->
+        <!-- Hero -->
         <div class="hero">
-            <h1>
-                <i class="fas fa-laptop-code"></i> 
-                माझी CSC सेवा
-            </h1>
-            <div class="tagline">
-                ग्रामीण डिजिटल सेवा केंद्र | सुरक्षित, वेगवान आणि विश्वासार्ह सेवा<br>
-                ई-गव्हर्नन्स तुमच्या दारी
-            </div>
+            <h1><i class="fas fa-laptop-code"></i> माझी CSC सेवा</h1>
+            <div class="tagline">ग्रामीण डिजिटल सेवा केंद्र | सुरक्षित, वेगवान आणि विश्वासार्ह सेवा<br>ई-गव्हर्नन्स तुमच्या दारी</div>
         </div>
 
-        <!-- Referrals Dynamic Section -->
-        <div class="referral-card" id="referralSection">
+        <!-- Referral Section -->
+        <div class="referral-card">
             <div class="referral-text">
                 <h2><i class="fas fa-user-friends"></i> रेफरल लिंक <span style="font-size: 1rem;">(Refer & Earn)</span></h2>
                 <p>तुमच्या मित्रांना सीएससी सेवांसाठी आमंत्रित करा आणि विशेष सवलत मिळवा. खालील लिंक कॉपी करून शेअर करा.</p>
-                <div class="stats-mini">
-                    <span><i class="fas fa-chart-line"></i> आजचे रेफरल: 142+</span>
-                    <span><i class="fas fa-trophy"></i> तुमचे बोनस: ₹50 प्रति रेफर</span>
-                </div>
+                <div class="stats-mini"><span><i class="fas fa-chart-line"></i> आजचे रेफरल: 142+</span><span><i class="fas fa-trophy"></i> तुमचे बोनस: ₹50 प्रति रेफर</span></div>
             </div>
             <div class="referral-link-box">
                 <input type="text" id="referralLinkInput" readonly value="https://cscseva.mh.gov.in/refer?ref=CSCMH2312&utm_source=partner" />
@@ -441,232 +537,224 @@
             </div>
         </div>
 
-        <!-- Main Service Cards: DSC, PAN Card Registration, CSC -->
+        <!-- Services Grid -->
         <div class="services-grid">
-            <!-- DSC Card -->
+            <!-- DSC CARD - यावर क्लिक करून पॉपअप मध्ये कंपन्या दाखवा -->
             <div class="service-card" id="dscCard">
-                <div class="icon-large">
-                    <i class="fas fa-digital-tiling"></i>
-                </div>
+                <div class="icon-large"><i class="fas fa-digital-tiling"></i></div>
                 <h3>डिजिटल सिग्नेचर (DSC)</h3>
-                <div class="service-desc">
-                    क्लास 2 / क्लास 3 DSC, नवीन नोंदणी, रिन्यूअल करा. वैध ई-सही साठी त्वरित प्रक्रिया.
-                </div>
-                <a href="#" class="btn-link" id="dscRegBtn"><i class="fas fa-arrow-right"></i> DSC नोंदणी करा</a>
+                <div class="service-desc">क्लास 2 / क्लास 3 DSC, नवीन नोंदणी, रिन्यूअल. कंपनीनुसार लिंक्स साठी क्लिक करा.</div>
+                <button class="btn-link" id="dscPopupBtn"><i class="fas fa-building"></i> DSC नोंदणी कंपन्या</button>
             </div>
-            <!-- PAN Card Registration Card -->
+            <!-- PAN Card -->
             <div class="service-card" id="panCardCard">
-                <div class="icon-large">
-                    <i class="fas fa-id-card"></i>
-                </div>
+                <div class="icon-large"><i class="fas fa-id-card"></i></div>
                 <h3>PAN कार्ड नोंदणी</h3>
-                <div class="service-desc">
-                    नवीन पॅन कार्ड, सुधारणा, डुप्लिकेट, ई-पॅन त्वरित मिळवा. सोपी प्रक्रिया.
-                </div>
+                <div class="service-desc">नवीन पॅन कार्ड, सुधारणा, डुप्लिकेट, ई-पॅन त्वरित मिळवा.</div>
                 <a href="#" class="btn-link" id="panRegBtn"><i class="fas fa-arrow-right"></i> PAN नोंदणी करा</a>
             </div>
-            <!-- CSC Core Services Card -->
+            <!-- CSC Services -->
             <div class="service-card" id="cscServiceCard">
-                <div class="icon-large">
-                    <i class="fas fa-globe"></i>
-                </div>
+                <div class="icon-large"><i class="fas fa-globe"></i></div>
                 <h3>CSC केंद्र सेवा</h3>
-                <div class="service-desc">
-                    CSC कॉमन सर्व्हिस सेंटर मार्फत शासकीय योजना, सर्टिफिकेट, उपयोगिता बिल भरणा.
-                </div>
+                <div class="service-desc">CSC कॉमन सर्व्हिस सेंटर मार्फत शासकीय योजना, सर्टिफिकेट.</div>
                 <a href="#" class="btn-link" id="cscMainLinkBtn"><i class="fas fa-external-link-alt"></i> CSC पोर्टलवर जा</a>
             </div>
         </div>
 
-        <!-- Separate explicit sections for CSC link आणि आपले सरकार -->
+        <!-- CSC Link + Aaple Sarkar -->
         <div class="double-feature">
             <div class="feature-block" id="cscLinkBlock">
-                <div class="feature-title">
-                    <i class="fas fa-network-wired" style="color: var(--icon-color);"></i> 
-                    CSC लिंक (CSC Link)
-                </div>
-                <div class="feature-link">
-                    <span><i class="fas fa-link"></i> अधिकृत पोर्टल :</span>
-                    <a href="#" id="cscDirectLink" target="_blank">https://csc.gov.in <i class="fas fa-up-right-from-square"></i></a>
-                    <span class="visit-icon" id="visitCSCBtn">भेट द्या →</span>
-                </div>
-                <p style="margin-top: 12px; font-size: 0.8rem; color: var(--text-secondary);">CSC ई-सेवा, डिजीलॉकर, कौशल्य विकास आणि अधिक.</p>
+                <div class="feature-title"><i class="fas fa-network-wired"></i> CSC लिंक (CSC Link)</div>
+                <div class="feature-link"><span><i class="fas fa-link"></i> अधिकृत पोर्टल :</span><a href="#" id="cscDirectLink">https://csc.gov.in <i class="fas fa-up-right-from-square"></i></a><span class="visit-icon" id="visitCSCBtn">भेट द्या →</span></div>
+                <p style="margin-top:12px; font-size:0.8rem;">CSC ई-सेवा, डिजीलॉकर, कौशल्य विकास.</p>
             </div>
-
             <div class="feature-block" id="aapleSarkarBlock">
-                <div class="feature-title">
-                    <i class="fas fa-landmark" style="color: var(--icon-color);"></i> 
-                    आपले सरकार (Aaple Sarkar)
-                </div>
-                <div class="feature-link">
-                    <span><i class="fas fa-handshake"></i> महाराष्ट्र सरकार पोर्टल :</span>
-                    <a href="#" id="aapleSarkarLink" target="_blank">https://aaplesarkar.maharashtra.gov.in <i class="fas fa-up-right-from-square"></i></a>
-                    <span class="visit-icon" id="visitAapleBtn">भेट द्या →</span>
-                </div>
-                <p style="margin-top: 12px; font-size: 0.8rem; color: var(--text-secondary);">शासनाच्या विविध योजना, अर्ज, सेवा पुरवठा, जात प्रमाणपत्र इ.</p>
+                <div class="feature-title"><i class="fas fa-landmark"></i> आपले सरकार (Aaple Sarkar)</div>
+                <div class="feature-link"><span><i class="fas fa-handshake"></i> महाराष्ट्र सरकार पोर्टल :</span><a href="#" id="aapleSarkarLink">https://aaplesarkar.maharashtra.gov.in <i class="fas fa-up-right-from-square"></i></a><span class="visit-icon" id="visitAapleBtn">भेट द्या →</span></div>
+                <p style="margin-top:12px; font-size:0.8rem;">शासनाच्या विविध योजना, अर्ज, सेवा पुरवठा.</p>
             </div>
         </div>
+        <div class="info-note"><p><i class="fas fa-info-circle"></i> ✨ DSC बटणावर क्लिक केल्यास DSC प्रदाता कंपन्यांची पॉपअप यादी दिसेल. प्रत्येक कंपनीच्या लिंकवर क्लिक केल्यावर नवीन टॅबमध्ये अधिकृत वेबसाइट उघडेल.</p></div>
+        <footer><i class="fas fa-chalkboard-user"></i> माझी CSC सेवा | डिजिटल इंडियाचा भाग | सर्व हक्क राखीव © 2025</footer>
+    </div>
 
-        <!-- Extra info -->
-        <div class="info-note">
-            <p style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;"><i class="fas fa-info-circle" style="color: var(--link-color);"></i> 
-            <span>✨ सर्व सेवा CSC वेब पोर्टल, आपले सरकार, PAN व DSC नोंदणी लिंकद्वारे उपलब्ध. कृपया अधिक माहितीसाठी संबंधित साइट ला भेट द्या.</span>
-            </p>
+    <!-- POPUP MODAL for DSC Companies -->
+    <div id="dscModal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3><i class="fas fa-digital-tiling"></i> DSC नोंदणी कंपन्या</h3>
+                <button class="modal-close" id="closeModalBtn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="company-list" id="companyListContainer">
+                <!-- कंपन्या लिंक्स dynamic असतील पण इथे static पण चालेल -->
+                <!-- प्रत्येक लिंक नवीन टॅब मध्ये उघडेल -->
+            </div>
         </div>
-
-        <footer>
-            <i class="fas fa-chalkboard-user"></i> माझी CSC सेवा | डिजिटल इंडियाचा भाग | सर्व हक्क राखीव © 2025
-        </footer>
     </div>
 
     <div id="toastMsg" class="toast-msg">✓ कॉपी झाले!</div>
 
     <script>
-        // ----- DARK / LIGHT THEME TOGGLE ------
-        const toggleBtn = document.getElementById('themeToggleBtn');
-        const themeIcon = document.getElementById('themeIcon');
-        const themeTextSpan = document.getElementById('themeText');
+        // DSC कंपन्यांची माहिती (कंपनी नाव + लिंक)
+        const dscCompanies = [
+            { name: "eMudhra (ई-मुद्रा)", url: "https://www.emudhra.com/dsc" },
+            { name: "nCode Solutions (nCode)", url: "https://www.ncode.in/digital-signature-certificate" },
+            { name: "Sify Technologies", url: "https://www.sifytech.com/digital-signature" },
+            { name: "Capricorn (पंथ नीलकंठ)", url: "https://www.capricorn.co.in/dsc.aspx" },
+            { name: "IDRBT (सीए सीएफ)", url: "https://www.idrbt.ac.in/dsc" },
+            { name: "eSign (CSC eSign)", url: "https://www.csccloud.in/esign" }
+        ];
+
+        // DOM elements
+        const modal = document.getElementById('dscModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const dscPopupBtn = document.getElementById('dscPopupBtn');
+        const companyContainer = document.getElementById('companyListContainer');
         
-        // Check localStorage for saved theme
-        const savedTheme = localStorage.getItem('csc_theme');
-        if (savedTheme === 'dark') {
-            document.body.classList.add('dark');
-            themeIcon.className = 'fas fa-sun';
-            themeTextSpan.innerText = 'लाइट मोड';
-        } else {
-            document.body.classList.remove('dark');
-            themeIcon.className = 'fas fa-moon';
-            themeTextSpan.innerText = 'डार्क मोड';
+        // फंक्शन: पॉपअप मध्ये कंपन्या बटणे तयार करा
+        function loadCompanyButtons() {
+            companyContainer.innerHTML = '';
+            dscCompanies.forEach(company => {
+                const linkBtn = document.createElement('a');
+                linkBtn.href = '#';
+                linkBtn.className = 'company-link-btn';
+                linkBtn.setAttribute('data-url', company.url);
+                linkBtn.innerHTML = `
+                    <span><i class="fas fa-building"></i> ${company.name}</span>
+                    <i class="fas fa-external-link-alt"></i>
+                `;
+                // प्रत्येक लिंकवर क्लिक केल्यावर नवीन टॅब उघडा
+                linkBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetUrl = linkBtn.getAttribute('data-url');
+                    if (targetUrl) {
+                        window.open(targetUrl, '_blank');
+                        // पॉपअप बंद करायचा की नाही? वापरकर्त्याला सोयीसाठी थोडा वेळ थांबवून बंद केल्यास बरे; पण आपण फक्त उघडू आणि पॉपअप बंद करू नये कारण पुन्हा पाहू शकतो.
+                        // परंतु हवे असल्यास modal बंद करू शकतो; पण अधिक चांगले म्हणजे क्लिक केल्यावर बंद न करणे - user स्वतः बंद करेल.
+                        // असेच ठेवू.
+                    }
+                });
+                companyContainer.appendChild(linkBtn);
+            });
         }
         
-        function toggleTheme() {
-            if (document.body.classList.contains('dark')) {
-                document.body.classList.remove('dark');
-                localStorage.setItem('csc_theme', 'light');
-                themeIcon.className = 'fas fa-moon';
-                themeTextSpan.innerText = 'डार्क मोड';
-            } else {
-                document.body.classList.add('dark');
-                localStorage.setItem('csc_theme', 'dark');
-                themeIcon.className = 'fas fa-sun';
-                themeTextSpan.innerText = 'लाइट मोड';
+        // पॉपअप दाखवा
+        function openModal() {
+            loadCompanyButtons(); // refresh
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // DSC बटणावर क्लिक -> पॉपअप
+        if(dscPopupBtn) {
+            dscPopupBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal();
+            });
+        }
+        
+        // कार्डवर क्लिक केल्यास पण पॉपअप उघडू शकतो (पर्यायी)
+        const dscCardDiv = document.getElementById('dscCard');
+        dscCardDiv.addEventListener('click', (e) => {
+            if(e.target.tagName !== 'BUTTON' && e.target.closest('button') !== dscPopupBtn && !e.target.closest('.btn-link')) {
+                openModal();
             }
-        }
-        toggleBtn.addEventListener('click', toggleTheme);
+        });
         
-        // ----- Referral link copy ----
+        // मोडल बंद करणे
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if(e.target === modal) closeModal();
+        });
+        
+        // Esc की ने बंद
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+        
+        // ----- Copy referral link -----
         const referLinkInput = document.getElementById('referralLinkInput');
         const copyBtn = document.getElementById('copyReferralBtn');
         const toast = document.getElementById('toastMsg');
-        
-        function showToast(message) {
-            toast.textContent = message || "✓ कॉपी झाले!";
+        function showToast(msg) {
+            toast.textContent = msg || "✓ कॉपी झाले!";
             toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 2000);
+            setTimeout(() => toast.classList.remove('show'), 2000);
         }
-        
         copyBtn.addEventListener('click', () => {
             referLinkInput.select();
-            referLinkInput.setSelectionRange(0, 99999);
-            navigator.clipboard.writeText(referLinkInput.value).then(() => {
-                showToast("रेफरल लिंक कॉपी झाली! ✨");
-            }).catch(() => {
-                alert("मॅन्युअली कॉपी करा: " + referLinkInput.value);
-            });
+            navigator.clipboard.writeText(referLinkInput.value).then(() => showToast("रेफरल लिंक कॉपी झाली! ✨"));
         });
         
-        // --- DSC registration action ---
-        const dscBtn = document.getElementById('dscRegBtn');
-        const dscCardDiv = document.getElementById('dscCard');
-        dscBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.open('https://www.csccloud.in/dsc-registration', '_blank');
-        });
-        dscCardDiv.addEventListener('click', (e) => {
-            if(e.target.tagName !== 'A' && !e.target.closest('a')) {
-                window.open('https://www.csccloud.in/dsc-registration', '_blank');
-            }
-        });
-        
-        // --- PAN Card Registration ---
+        // PAN card link
         const panBtn = document.getElementById('panRegBtn');
-        const panCardDiv = document.getElementById('panCardCard');
         panBtn.addEventListener('click', (e) => {
             e.preventDefault();
             window.open('https://www.onlineservices.nsdl.com/paam/endUserRegister.html', '_blank');
         });
-        panCardDiv.addEventListener('click', (e) => {
+        // CSC main link
+        const cscMainBtn = document.getElementById('cscMainLinkBtn');
+        cscMainBtn.addEventListener('click', (e) => { e.preventDefault(); window.open('https://csc.gov.in/', '_blank'); });
+        // CSC direct
+        const cscDirect = document.getElementById('cscDirectLink');
+        const visitCSC = document.getElementById('visitCSCBtn');
+        function openCSC() { window.open('https://csc.gov.in/', '_blank'); }
+        cscDirect.addEventListener('click', (e) => { e.preventDefault(); openCSC(); });
+        visitCSC.addEventListener('click', openCSC);
+        // Aaple Sarkar
+        const aapleLink = document.getElementById('aapleSarkarLink');
+        const visitAaple = document.getElementById('visitAapleBtn');
+        function openAaple() { window.open('https://aaplesarkar.maharashtra.gov.in/', '_blank'); }
+        aapleLink.addEventListener('click', (e) => { e.preventDefault(); openAaple(); });
+        visitAaple.addEventListener('click', openAaple);
+        
+        // Theme toggle logic
+        const toggleBtn = document.getElementById('themeToggleBtn');
+        const themeIconSpan = document.getElementById('themeIcon');
+        const themeTextSpan = document.getElementById('themeText');
+        const savedTheme = localStorage.getItem('csc_theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark');
+            themeIconSpan.className = 'fas fa-sun';
+            themeTextSpan.innerText = 'लाइट मोड';
+        } else {
+            document.body.classList.remove('dark');
+            themeIconSpan.className = 'fas fa-moon';
+            themeTextSpan.innerText = 'डार्क मोड';
+        }
+        toggleBtn.addEventListener('click', () => {
+            if (document.body.classList.contains('dark')) {
+                document.body.classList.remove('dark');
+                localStorage.setItem('csc_theme', 'light');
+                themeIconSpan.className = 'fas fa-moon';
+                themeTextSpan.innerText = 'डार्क मोड';
+            } else {
+                document.body.classList.add('dark');
+                localStorage.setItem('csc_theme', 'dark');
+                themeIconSpan.className = 'fas fa-sun';
+                themeTextSpan.innerText = 'लाइट मोड';
+            }
+        });
+        
+        // PAN Card card click alternative
+        document.getElementById('panCardCard').addEventListener('click', (e) => {
             if(e.target.tagName !== 'A' && !e.target.closest('a')) {
                 window.open('https://www.onlineservices.nsdl.com/paam/endUserRegister.html', '_blank');
             }
         });
-        
-        // --- CSC main portal ---
-        const cscMainLink = document.getElementById('cscMainLinkBtn');
-        const cscServiceCardDiv = document.getElementById('cscServiceCard');
-        cscMainLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.open('https://csc.gov.in/', '_blank');
-        });
-        cscServiceCardDiv.addEventListener('click', (e) => {
+        document.getElementById('cscServiceCard').addEventListener('click', (e) => {
             if(e.target.tagName !== 'A' && !e.target.closest('a')) {
                 window.open('https://csc.gov.in/', '_blank');
             }
         });
-        
-        // ----- CSC link (double-feature) -----
-        const cscDirectLinkAnchor = document.getElementById('cscDirectLink');
-        const visitCSCSpan = document.getElementById('visitCSCBtn');
-        const cscBlock = document.getElementById('cscLinkBlock');
-        function openCSCPortal() {
-            window.open('https://csc.gov.in/', '_blank');
-        }
-        cscDirectLinkAnchor.addEventListener('click', (e) => {
-            e.preventDefault();
-            openCSCPortal();
-        });
-        visitCSCSpan.addEventListener('click', () => {
-            openCSCPortal();
-        });
-        if(cscBlock) {
-            cscBlock.addEventListener('click', (e) => {
-                if(e.target.tagName !== 'A' && e.target.id !== 'visitCSCBtn' && !e.target.closest('a')) {
-                    openCSCPortal();
-                }
-            });
-        }
-        
-        // ----- Aaple Sarkar Link -----
-        const aapleLinkAnchor = document.getElementById('aapleSarkarLink');
-        const visitAapleBtn = document.getElementById('visitAapleBtn');
-        const aapleBlock = document.getElementById('aapleSarkarBlock');
-        function openAapleSarkar() {
-            window.open('https://aaplesarkar.maharashtra.gov.in/', '_blank');
-        }
-        aapleLinkAnchor.addEventListener('click', (e) => {
-            e.preventDefault();
-            openAapleSarkar();
-        });
-        visitAapleBtn.addEventListener('click', () => {
-            openAapleSarkar();
-        });
-        if(aapleBlock) {
-            aapleBlock.addEventListener('click', (e) => {
-                if(e.target.tagName !== 'A' && e.target.id !== 'visitAapleBtn' && !e.target.closest('a')) {
-                    openAapleSarkar();
-                }
-            });
-        }
-        
-        // Small effect for cards
-        const allCards = document.querySelectorAll('.service-card, .feature-block');
-        allCards.forEach(card => {
-            card.addEventListener('mouseenter', () => {});
-        });
-        
-        console.log("CSC पेज डार्क/लाइट थीमसह यशस्वीरित्या लोड झाले | रेफरल, DSC, PAN, CSC, आपले सरकार समाविष्ट");
     </script>
 </body>
 </html>
