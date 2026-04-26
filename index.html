@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>CSC सेवा | 5 कलर बटणे | 3D अ‍ॅनिमेटेड बॅकग्राउंड</title>
+    <title>CSC सेवा | लाइट कंटेनर | 5 कलर बटणे लाइव्ह इफेक्ट</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -18,52 +18,56 @@
             --gradient-start: #0f0c29;
             --gradient-mid: #302b63;
             --gradient-end: #24243e;
-            --overlay-color1: rgba(255, 0, 150, 0.15);
-            --overlay-color2: rgba(0, 255, 200, 0.1);
-            --overlay-color3: rgba(100, 50, 255, 0.2);
-            --overlay-color4: rgba(255, 100, 0, 0.15);
-            --overlay-color5: rgba(0, 200, 255, 0.1);
-            --card-bg: rgba(255, 255, 255, 0.92);
-            --card-border: rgba(255, 255, 255, 0.3);
-            --text-primary: #1e2a3e;
-            --text-secondary: #4a5568;
-            --hero-bg-start: rgba(15, 43, 61, 0.85);
-            --hero-bg-end: rgba(27, 74, 110, 0.85);
+            --overlay-color1: rgba(255, 0, 150, 0.12);
+            --overlay-color2: rgba(0, 255, 200, 0.08);
+            --overlay-color3: rgba(100, 50, 255, 0.15);
+            --overlay-color4: rgba(255, 100, 0, 0.1);
+            --overlay-color5: rgba(0, 200, 255, 0.08);
+            /* लाइट कंटेनर कलर्स */
+            --card-bg: rgba(255, 255, 255, 0.96);
+            --card-border: rgba(200, 200, 220, 0.5);
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --hero-bg-start: rgba(15, 43, 61, 0.9);
+            --hero-bg-end: rgba(27, 74, 110, 0.9);
             --hero-text: white;
-            --referral-bg: rgba(255, 249, 232, 0.92);
-            --referral-border: rgba(255, 227, 163, 0.8);
+            --referral-bg: rgba(255, 251, 240, 0.96);
+            --referral-border: rgba(254, 215, 170, 0.8);
             --referral-text: #b45309;
             --btn-primary: #1e3a5f;
             --btn-primary-hover: #0f2b3f;
-            --feature-bg: rgba(254, 250, 245, 0.9);
-            --feature-border: rgba(255, 221, 176, 0.7);
-            --footer-border: rgba(206, 216, 226, 0.5);
-            --info-bg: rgba(233, 241, 249, 0.9);
+            --feature-bg: rgba(248, 250, 252, 0.96);
+            --feature-border: rgba(203, 213, 225, 0.6);
+            --footer-border: rgba(203, 213, 225, 0.5);
+            --info-bg: rgba(241, 245, 249, 0.96);
             --icon-bg: #fef3e8;
             --icon-color: #c2410c;
             --copy-btn-bg: #d97706;
             --copy-btn-hover: #b45309;
-            --modal-bg: rgba(0,0,0,0.7);
+            --modal-bg: rgba(0,0,0,0.6);
             --modal-content-bg: rgba(255, 255, 255, 0.98);
             --company-item-hover: #f1f5f9;
             --close-btn-bg: #e2e8f0;
-            --btn-green-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
-            --btn-green-shadow-hover: 0 6px 18px rgba(34, 197, 94, 0.65);
+            --btn-green-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+            --btn-green-shadow-hover: 0 6px 18px rgba(34, 197, 94, 0.5);
         }
 
         /* ========== थीम 2 - सनसेट (नारिंगी/लाल) ========== */
         body.theme-sunset {
-            --gradient-start: #1a0f0c;
-            --gradient-mid: #632b1a;
-            --gradient-end: #3e2014;
-            --overlay-color1: rgba(255, 100, 0, 0.2);
-            --overlay-color2: rgba(255, 50, 0, 0.15);
-            --overlay-color3: rgba(255, 150, 0, 0.2);
-            --overlay-color4: rgba(200, 80, 0, 0.15);
-            --overlay-color5: rgba(255, 120, 0, 0.1);
-            --card-bg: rgba(255, 245, 235, 0.94);
+            --gradient-start: #2d1a11;
+            --gradient-mid: #5c2e1a;
+            --gradient-end: #3d2014;
+            --overlay-color1: rgba(255, 100, 0, 0.18);
+            --overlay-color2: rgba(255, 80, 0, 0.12);
+            --overlay-color3: rgba(255, 140, 0, 0.16);
+            --overlay-color4: rgba(200, 80, 0, 0.12);
+            --overlay-color5: rgba(255, 120, 0, 0.08);
+            --card-bg: rgba(255, 248, 240, 0.96);
             --btn-primary: #c2410c;
             --btn-primary-hover: #9a3412;
+            --referral-bg: rgba(255, 245, 235, 0.96);
+            --feature-bg: rgba(255, 248, 240, 0.96);
+            --info-bg: rgba(255, 241, 230, 0.96);
         }
 
         /* ========== थीम 3 - ओशन (निळा/सियान) ========== */
@@ -71,14 +75,17 @@
             --gradient-start: #0c1a2e;
             --gradient-mid: #1a3b5c;
             --gradient-end: #0f2a3e;
-            --overlay-color1: rgba(0, 150, 255, 0.15);
-            --overlay-color2: rgba(0, 200, 220, 0.12);
-            --overlay-color3: rgba(50, 100, 255, 0.18);
-            --overlay-color4: rgba(0, 180, 200, 0.12);
-            --overlay-color5: rgba(0, 220, 250, 0.1);
-            --card-bg: rgba(230, 245, 255, 0.92);
+            --overlay-color1: rgba(0, 150, 255, 0.12);
+            --overlay-color2: rgba(0, 200, 220, 0.1);
+            --overlay-color3: rgba(50, 100, 255, 0.14);
+            --overlay-color4: rgba(0, 180, 200, 0.1);
+            --overlay-color5: rgba(0, 220, 250, 0.08);
+            --card-bg: rgba(240, 248, 255, 0.96);
             --btn-primary: #0284c7;
             --btn-primary-hover: #0369a1;
+            --referral-bg: rgba(240, 248, 255, 0.96);
+            --feature-bg: rgba(240, 248, 255, 0.96);
+            --info-bg: rgba(230, 245, 255, 0.96);
         }
 
         /* ========== थीम 4 - फॉरेस्ट (हिरवा) ========== */
@@ -86,14 +93,17 @@
             --gradient-start: #0a1f0a;
             --gradient-mid: #1a3b1a;
             --gradient-end: #0f2a0f;
-            --overlay-color1: rgba(0, 200, 100, 0.15);
-            --overlay-color2: rgba(50, 220, 100, 0.12);
-            --overlay-color3: rgba(0, 180, 80, 0.18);
-            --overlay-color4: rgba(100, 200, 50, 0.12);
-            --overlay-color5: rgba(0, 220, 120, 0.1);
-            --card-bg: rgba(235, 250, 235, 0.92);
+            --overlay-color1: rgba(0, 200, 100, 0.12);
+            --overlay-color2: rgba(50, 220, 100, 0.1);
+            --overlay-color3: rgba(0, 180, 80, 0.14);
+            --overlay-color4: rgba(100, 200, 50, 0.1);
+            --overlay-color5: rgba(0, 220, 120, 0.08);
+            --card-bg: rgba(240, 255, 240, 0.96);
             --btn-primary: #15803d;
             --btn-primary-hover: #166534;
+            --referral-bg: rgba(240, 255, 240, 0.96);
+            --feature-bg: rgba(240, 255, 240, 0.96);
+            --info-bg: rgba(235, 250, 235, 0.96);
         }
 
         /* ========== थीम 5 - रॉयल (जांबळा/गोल्ड) ========== */
@@ -101,32 +111,35 @@
             --gradient-start: #1a0f2e;
             --gradient-mid: #3b1a63;
             --gradient-end: #2a0f3e;
-            --overlay-color1: rgba(200, 0, 255, 0.15);
-            --overlay-color2: rgba(180, 50, 255, 0.12);
-            --overlay-color3: rgba(220, 100, 255, 0.18);
-            --overlay-color4: rgba(200, 80, 220, 0.12);
-            --overlay-color5: rgba(210, 120, 255, 0.1);
-            --card-bg: rgba(245, 235, 255, 0.92);
+            --overlay-color1: rgba(200, 0, 255, 0.12);
+            --overlay-color2: rgba(180, 50, 255, 0.1);
+            --overlay-color3: rgba(220, 100, 255, 0.14);
+            --overlay-color4: rgba(200, 80, 220, 0.1);
+            --overlay-color5: rgba(210, 120, 255, 0.08);
+            --card-bg: rgba(250, 245, 255, 0.96);
             --btn-primary: #7e22ce;
             --btn-primary-hover: #6b21a5;
+            --referral-bg: rgba(250, 245, 255, 0.96);
+            --feature-bg: rgba(250, 245, 255, 0.96);
+            --info-bg: rgba(245, 240, 255, 0.96);
         }
 
-        /* डार्क मोड override */
+        /* डार्क मोड override (डार्क मध्ये पण कंटेनर हलकेच राहतील) */
         body.dark {
-            --card-bg: rgba(30, 41, 59, 0.92);
-            --card-border: rgba(51, 65, 85, 0.5);
+            --card-bg: rgba(30, 41, 59, 0.94);
+            --card-border: rgba(51, 65, 85, 0.6);
             --text-primary: #f1f5f9;
             --text-secondary: #cbd5e1;
-            --hero-bg-start: rgba(2, 6, 23, 0.85);
-            --hero-bg-end: rgba(15, 43, 61, 0.85);
+            --hero-bg-start: rgba(2, 6, 23, 0.88);
+            --hero-bg-end: rgba(15, 43, 61, 0.88);
             --hero-text: #f1f5f9;
-            --referral-bg: rgba(45, 42, 31, 0.92);
+            --referral-bg: rgba(45, 42, 31, 0.94);
             --referral-border: rgba(123, 94, 59, 0.7);
             --referral-text: #fbbf24;
-            --feature-bg: rgba(15, 23, 42, 0.9);
-            --feature-border: rgba(51, 65, 85, 0.5);
+            --feature-bg: rgba(15, 23, 42, 0.92);
+            --feature-border: rgba(51, 65, 85, 0.6);
             --footer-border: rgba(51, 65, 85, 0.5);
-            --info-bg: rgba(15, 23, 42, 0.9);
+            --info-bg: rgba(15, 23, 42, 0.92);
             --icon-bg: #2d3748;
             --icon-color: #fbbf24;
             --copy-btn-bg: #d97706;
@@ -135,8 +148,8 @@
             --modal-content-bg: rgba(30, 41, 59, 0.98);
             --company-item-hover: #334155;
             --close-btn-bg: #334155;
-            --btn-green-shadow: 0 4px 12px rgba(34, 197, 94, 0.5);
-            --btn-green-shadow-hover: 0 6px 20px rgba(34, 197, 94, 0.75);
+            --btn-green-shadow: 0 4px 12px rgba(34, 197, 94, 0.45);
+            --btn-green-shadow-hover: 0 6px 18px rgba(34, 197, 94, 0.65);
         }
 
         body {
@@ -148,7 +161,7 @@
             background: radial-gradient(circle at 20% 30%, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
             background-attachment: fixed;
             overflow-x: hidden;
-            transition: background 0.5s ease;
+            transition: background 0.4s ease;
         }
 
         /* Animated gradient overlay */
@@ -189,8 +202,8 @@
             width: 100%;
             height: 100%;
             background-image: 
-                radial-gradient(circle at 20% 40%, rgba(255,255,255,0.08) 1px, transparent 1px),
-                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.06) 1px, transparent 1px);
+                radial-gradient(circle at 20% 40%, rgba(255,255,255,0.06) 1px, transparent 1px),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.04) 1px, transparent 1px);
             background-size: 50px 50px, 80px 80px;
             pointer-events: none;
             animation: floatParticles 20s linear infinite;
@@ -198,9 +211,9 @@
         }
 
         @keyframes floatParticles {
-            0% { transform: translateY(0px) translateX(0px); opacity: 0.5; }
-            50% { transform: translateY(-20px) translateX(10px); opacity: 0.8; }
-            100% { transform: translateY(0px) translateX(0px); opacity: 0.5; }
+            0% { transform: translateY(0px) translateX(0px); opacity: 0.4; }
+            50% { transform: translateY(-15px) translateX(8px); opacity: 0.7; }
+            100% { transform: translateY(0px) translateX(0px); opacity: 0.4; }
         }
 
         .container {
@@ -211,12 +224,13 @@
             z-index: 2;
         }
 
-        /* Glassmorphism for cards */
+        /* Glassmorphism for cards - Light containers */
         .service-card, .referral-card, .feature-block, .hero, .info-note {
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(8px);
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            transition: background 0.3s ease, border 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
         }
 
         .hero {
@@ -232,18 +246,19 @@
             z-index: 1000;
             display: flex;
             gap: 0.6rem;
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(12px);
             padding: 0.5rem 0.8rem;
             border-radius: 3rem;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         .color-btn {
             width: 36px;
             height: 36px;
             border-radius: 50%;
             cursor: pointer;
-            border: 2px solid rgba(255,255,255,0.8);
+            border: 2px solid rgba(255,255,255,0.9);
             transition: all 0.2s ease;
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
@@ -253,7 +268,7 @@
         }
         .color-btn.active {
             border: 3px solid white;
-            box-shadow: 0 0 15px rgba(255,255,255,0.8);
+            box-shadow: 0 0 15px rgba(255,255,255,0.9);
             transform: scale(1.1);
         }
         .color-default { background: linear-gradient(135deg, #5b4c8a, #302b63); }
@@ -302,14 +317,14 @@
         .referral-card { border-radius: 1.2rem; padding: 0.7rem 1rem; margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.8rem; }
         .referral-text h2 { font-size: 1.1rem; color: var(--referral-text); }
         .referral-text p { font-size: 0.7rem; }
-        .referral-link-box { flex: 1; padding: 0.3rem 0.6rem; background: rgba(255,255,255,0.3); border-radius: 2rem; display: flex; align-items: center; gap: 5px; }
+        .referral-link-box { flex: 1; padding: 0.3rem 0.6rem; background: rgba(0,0,0,0.05); border-radius: 2rem; display: flex; align-items: center; gap: 5px; }
         .referral-link-box input { flex: 1; font-size: 0.65rem; background: transparent; border: none; outline: none; color: var(--text-primary); }
         .copy-btn { padding: 3px 8px; font-size: 0.6rem; background: var(--copy-btn-bg); color: white; border: none; border-radius: 2rem; cursor: pointer; }
         .stats-mini { display: flex; gap: 0.5rem; font-size: 0.6rem; justify-content: center; margin-top: 5px; }
 
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
         .service-card { border-radius: 1.2rem; padding: 0.9rem; transition: all 0.3s ease; cursor: pointer; text-align: center; }
-        .service-card:hover { transform: translateY(-4px); box-shadow: 0 15px 25px -12px rgba(0,0,0,0.2); border-color: rgba(243, 179, 61, 0.6); }
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 15px 25px -12px rgba(0,0,0,0.15); border-color: rgba(243, 179, 61, 0.6); }
 
         .double-feature { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; }
         .feature-block { flex: 1; border-radius: 1.2rem; padding: 0.7rem; text-align: center; transition: all 0.3s; }
@@ -317,10 +332,10 @@
         .feature-title { font-size: 1rem; gap: 5px; display: flex; align-items: center; justify-content: center; color: var(--text-primary); }
         .feature-link { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 5px; }
         .feature-link a { font-size: 0.65rem; color: var(--icon-color); text-decoration: none; }
-        .visit-icon { background: var(--icon-bg); padding: 3px 8px; border-radius: 1rem; font-size: 0.6rem; cursor: pointer; }
+        .visit-icon { background: var(--icon-bg); padding: 3px 8px; border-radius: 1rem; font-size: 0.6rem; cursor: pointer; color: var(--text-primary); }
 
         .info-note { border-radius: 1rem; padding: 0.5rem; font-size: 0.65rem; text-align: center; margin-bottom: 1rem; }
-        footer { text-align: center; font-size: 0.6rem; padding: 0.8rem; border-top: 1px solid var(--footer-border); margin-top: 1rem; }
+        footer { text-align: center; font-size: 0.6rem; padding: 0.8rem; border-top: 1px solid var(--footer-border); margin-top: 1rem; color: var(--text-secondary); }
 
         /* Modal */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--modal-bg); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(8px); }
@@ -346,7 +361,7 @@
     </style>
 </head>
 <body>
-    <!-- 5 कलर बटणे - पेज कलर बदलण्यासाठी -->
+    <!-- 5 कलर बटणे - लाइव्ह कलर इफेक्ट -->
     <div class="color-palette">
         <div class="color-btn color-default active" data-theme="default" title="डिफॉल्ट थीम"></div>
         <div class="color-btn color-sunset" data-theme="sunset" title="सनसेट थीम"></div>
@@ -364,7 +379,7 @@
     <div class="container">
         <div class="hero">
             <h1><i class="fas fa-laptop-code"></i> माझी CSC सेवा</h1>
-            <div class="tagline">ग्रामीण डिजिटल सेवा केंद्र | 5 कलर थीमसह 3D अ‍ॅनिमेशन</div>
+            <div class="tagline">ग्रामीण डिजिटल सेवा केंद्र | लाइट कंटेनर + 5 लाइव्ह कलर थीम</div>
         </div>
 
         <!-- Referral Section -->
@@ -397,8 +412,8 @@
             <div class="feature-block"><div class="feature-title"><i class="fas fa-landmark"></i> आपले सरकार</div><div class="feature-link"><span><i class="fas fa-handshake"></i></span><a href="#" id="aapleSarkarLink">aaplesarkar.maharashtra.gov.in</a><span class="visit-icon" id="visitAapleBtn">भेट द्या</span></div><p>महाराष्ट्र शासन योजना</p></div>
         </div>
         
-        <div class="info-note"><p><i class="fas fa-info-circle"></i> ✨ वरच्या 5 रंगीत बटणांवर क्लिक करून पेजचा रंग बदलवा. DSC/PAN साठी पॉपअप, 8 सेवा उपलब्ध.</p></div>
-        <footer><i class="fas fa-chalkboard-user"></i> माझी CSC सेवा | 5 कलर थीम | 3D अ‍ॅनिमेशन © 2025</footer>
+        <div class="info-note"><p><i class="fas fa-info-circle"></i> ✨ वरच्या 5 रंगीत बटणांवर क्लिक करा - बॅकग्राउंड आणि कंटेनरचा रंग लाइव्ह बदलेल! DSC/PAN साठी पॉपअप, 8 सेवा उपलब्ध.</p></div>
+        <footer><i class="fas fa-chalkboard-user"></i> माझी CSC सेवा | लाइट कंटेनर | 5 लाइव्ह कलर थीम | 3D अ‍ॅनिमेशन © 2025</footer>
     </div>
 
     <!-- Modals -->
@@ -466,11 +481,10 @@
         demoCardIds.forEach((id, i) => { document.getElementById(id).addEventListener('click', (e) => { if(!e.target.closest('a')) window.open(demoUrls[i], '_blank'); }); });
         document.getElementById('cscServiceCard').addEventListener('click', (e) => { if(!e.target.closest('a')) window.open('https://csc.gov.in/', '_blank'); });
 
-        // ========== 5 कलर थीम बदलण्याची स्क्रिप्ट ==========
+        // ========== 5 लाइव्ह कलर थीम बदलण्याची स्क्रिप्ट ==========
         const colorBtns = document.querySelectorAll('.color-btn');
         const bodyElement = document.body;
         
-        // Remove all theme classes
         function removeAllThemes() {
             bodyElement.classList.remove('theme-sunset', 'theme-ocean', 'theme-forest', 'theme-royal');
         }
@@ -478,7 +492,6 @@
         colorBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const theme = btn.dataset.theme;
-                // Remove active class from all
                 colorBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 removeAllThemes();
