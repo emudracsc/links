@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>CSC सेवा | DSC व PAN कार्ड पॉपअप | सेंटर हेडिंग</title>
+    <title>CSC सेवा | DSC व PAN कार्ड पॉपअप | ग्रीन शॅडो बटणे</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts -->
@@ -47,6 +47,9 @@
             --modal-content-bg: #ffffff;
             --company-item-hover: #f1f5f9;
             --close-btn-bg: #e2e8f0;
+            /* Green shadow variable */
+            --btn-green-shadow: 0 4px 12px rgba(34, 197, 94, 0.35);
+            --btn-green-shadow-hover: 0 6px 18px rgba(34, 197, 94, 0.55);
         }
 
         /* ----- DARK THEME ----- */
@@ -80,6 +83,8 @@
             --modal-content-bg: #1e293b;
             --company-item-hover: #334155;
             --close-btn-bg: #334155;
+            --btn-green-shadow: 0 4px 12px rgba(34, 197, 94, 0.5);
+            --btn-green-shadow-hover: 0 6px 20px rgba(34, 197, 94, 0.7);
         }
 
         body {
@@ -100,7 +105,6 @@
         h1, h2, h3, .hero h1, .referral-text h2, .feature-title, .service-card h3, .modal-header h3 {
             text-align: center;
         }
-        /* Hero section specific heading alignment */
         .hero h1 {
             justify-content: center;
         }
@@ -108,9 +112,7 @@
             text-align: center;
             border-left: none;
             padding-left: 0;
-            border-left: 0;
         }
-        /* Referral card heading center */
         .referral-text h2 {
             justify-content: center;
         }
@@ -120,11 +122,9 @@
         .stats-mini {
             justify-content: center;
         }
-        /* Feature titles center */
         .feature-title {
             justify-content: center;
         }
-        /* Service card content */
         .service-card h3 {
             text-align: center;
         }
@@ -144,12 +144,8 @@
             display: flex;
             justify-content: center;
         }
-        /* Feature link block - center text */
         .feature-link {
             justify-content: center;
-            text-align: center;
-        }
-        .feature-link span, .feature-link a {
             text-align: center;
         }
         .info-note p {
@@ -285,24 +281,6 @@
             font-family: monospace;
             text-align: center;
         }
-        .copy-btn {
-            background: var(--copy-btn-bg);
-            border: none;
-            color: white;
-            padding: 8px 14px;
-            border-radius: 2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-            font-size: 0.8rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .copy-btn:hover {
-            background: var(--copy-btn-hover);
-            transform: scale(0.96);
-        }
         .stats-mini {
             display: flex;
             gap: 1rem;
@@ -310,6 +288,37 @@
             color: var(--referral-text);
             justify-content: center;
             margin-top: 8px;
+        }
+
+        /* ---------- BUTTON GREEN SHADOW (ADDED) ---------- */
+        .btn-link, .copy-btn, .company-link-btn, .modal-close, .visit-icon, .theme-toggle {
+            box-shadow: var(--btn-green-shadow);
+            transition: all 0.25s ease;
+        }
+        .btn-link:hover, .copy-btn:hover, .company-link-btn:hover, .modal-close:hover, .visit-icon:hover, .theme-toggle:hover {
+            box-shadow: var(--btn-green-shadow-hover);
+            transform: translateY(-2px);
+        }
+        /* Specific override for copy-btn and others to keep consistent */
+        .copy-btn {
+            box-shadow: var(--btn-green-shadow);
+        }
+        .copy-btn:hover {
+            box-shadow: var(--btn-green-shadow-hover);
+        }
+        .company-link-btn {
+            box-shadow: 0 2px 6px rgba(34, 197, 94, 0.2);
+        }
+        .company-link-btn:hover {
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+        }
+        /* Visit icon also gets green shadow */
+        .visit-icon {
+            display: inline-block;
+            box-shadow: var(--btn-green-shadow);
+        }
+        .visit-icon:hover {
+            box-shadow: var(--btn-green-shadow-hover);
         }
 
         /* Services Grid */
@@ -372,7 +381,7 @@
             font-weight: 500;
             text-decoration: none;
             font-size: 0.85rem;
-            transition: 0.2s;
+            transition: 0.25s;
             border: none;
             cursor: pointer;
             margin: 0 auto;
@@ -435,9 +444,11 @@
             background: var(--icon-bg);
             padding: 6px 12px;
             border-radius: 2rem;
-            transition: 0.2s;
+            transition: 0.25s;
             cursor: pointer;
             color: var(--text-primary);
+            font-size: 0.85rem;
+            font-weight: 500;
         }
         .visit-icon:hover {
             background: var(--btn-primary);
@@ -542,7 +553,7 @@
             align-items: center;
             justify-content: center;
             color: var(--text-primary);
-            transition: 0.2s;
+            transition: 0.25s;
         }
         .modal-close:hover {
             background: #ef4444;
@@ -565,7 +576,7 @@
             text-decoration: none;
             color: var(--text-primary);
             font-weight: 600;
-            transition: all 0.2s;
+            transition: all 0.25s;
             cursor: pointer;
         }
         .company-link-btn:hover {
@@ -589,7 +600,7 @@
     </style>
 </head>
 <body>
-    <!-- Theme Toggle Button -->
+    <!-- Theme Toggle Button (with green shadow too) -->
     <div class="theme-toggle" id="themeToggleBtn">
         <i class="fas fa-moon" id="themeIcon"></i>
         <span id="themeText">डार्क मोड</span>
