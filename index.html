@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>CSC सेवा | लाइट कंटेनर | 5 कलर बटणे लाइव्ह इफेक्ट</title>
+    <title>CSC सेवा | 10 सेवा बॉक्स | लाइट कंटेनर | 5 लाइव्ह कलर थीम</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -13,7 +13,7 @@
             box-sizing: border-box;
         }
 
-        /* ========== DEFAULT THEME (पर्पल/ब्लू - थीम 1) ========== */
+        /* ========== DEFAULT THEME ========== */
         :root {
             --gradient-start: #0f0c29;
             --gradient-mid: #302b63;
@@ -23,7 +23,6 @@
             --overlay-color3: rgba(100, 50, 255, 0.15);
             --overlay-color4: rgba(255, 100, 0, 0.1);
             --overlay-color5: rgba(0, 200, 255, 0.08);
-            /* लाइट कंटेनर कलर्स */
             --card-bg: rgba(255, 255, 255, 0.96);
             --card-border: rgba(200, 200, 220, 0.5);
             --text-primary: #1e293b;
@@ -52,7 +51,7 @@
             --btn-green-shadow-hover: 0 6px 18px rgba(34, 197, 94, 0.5);
         }
 
-        /* ========== थीम 2 - सनसेट (नारिंगी/लाल) ========== */
+        /* ========== थीम 2 - सनसेट ========== */
         body.theme-sunset {
             --gradient-start: #2d1a11;
             --gradient-mid: #5c2e1a;
@@ -70,7 +69,7 @@
             --info-bg: rgba(255, 241, 230, 0.96);
         }
 
-        /* ========== थीम 3 - ओशन (निळा/सियान) ========== */
+        /* ========== थीम 3 - ओशन ========== */
         body.theme-ocean {
             --gradient-start: #0c1a2e;
             --gradient-mid: #1a3b5c;
@@ -88,7 +87,7 @@
             --info-bg: rgba(230, 245, 255, 0.96);
         }
 
-        /* ========== थीम 4 - फॉरेस्ट (हिरवा) ========== */
+        /* ========== थीम 4 - फॉरेस्ट ========== */
         body.theme-forest {
             --gradient-start: #0a1f0a;
             --gradient-mid: #1a3b1a;
@@ -106,7 +105,7 @@
             --info-bg: rgba(235, 250, 235, 0.96);
         }
 
-        /* ========== थीम 5 - रॉयल (जांबळा/गोल्ड) ========== */
+        /* ========== थीम 5 - रॉयल ========== */
         body.theme-royal {
             --gradient-start: #1a0f2e;
             --gradient-mid: #3b1a63;
@@ -124,7 +123,7 @@
             --info-bg: rgba(245, 240, 255, 0.96);
         }
 
-        /* डार्क मोड override (डार्क मध्ये पण कंटेनर हलकेच राहतील) */
+        /* डार्क मोड */
         body.dark {
             --card-bg: rgba(30, 41, 59, 0.94);
             --card-border: rgba(51, 65, 85, 0.6);
@@ -148,8 +147,6 @@
             --modal-content-bg: rgba(30, 41, 59, 0.98);
             --company-item-hover: #334155;
             --close-btn-bg: #334155;
-            --btn-green-shadow: 0 4px 12px rgba(34, 197, 94, 0.45);
-            --btn-green-shadow-hover: 0 6px 18px rgba(34, 197, 94, 0.65);
         }
 
         body {
@@ -164,7 +161,6 @@
             transition: background 0.4s ease;
         }
 
-        /* Animated gradient overlay */
         body::before {
             content: '';
             position: fixed;
@@ -182,7 +178,6 @@
             animation: gradientShift 12s ease infinite;
             pointer-events: none;
             z-index: 0;
-            transition: background 0.4s ease;
         }
 
         @keyframes gradientShift {
@@ -193,7 +188,6 @@
             100% { background-position: 0% 50%; opacity: 0.6; }
         }
 
-        /* Floating particles */
         body::after {
             content: '';
             position: fixed;
@@ -217,14 +211,13 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             padding: 0 0.5rem;
             position: relative;
             z-index: 2;
         }
 
-        /* Glassmorphism for cards - Light containers */
         .service-card, .referral-card, .feature-block, .hero, .info-note {
             backdrop-filter: blur(8px);
             background: var(--card-bg);
@@ -238,7 +231,7 @@
             backdrop-filter: blur(8px);
         }
 
-        /* ========== 5 कलर बटणांचा बार ========== */
+        /* 5 कलर बटणे */
         .color-palette {
             position: fixed;
             top: 1rem;
@@ -262,22 +255,14 @@
             transition: all 0.2s ease;
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
-        .color-btn:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 12px rgba(255,255,255,0.6);
-        }
-        .color-btn.active {
-            border: 3px solid white;
-            box-shadow: 0 0 15px rgba(255,255,255,0.9);
-            transform: scale(1.1);
-        }
+        .color-btn:hover { transform: scale(1.15); box-shadow: 0 0 12px rgba(255,255,255,0.6); }
+        .color-btn.active { border: 3px solid white; box-shadow: 0 0 15px rgba(255,255,255,0.9); transform: scale(1.1); }
         .color-default { background: linear-gradient(135deg, #5b4c8a, #302b63); }
         .color-sunset { background: linear-gradient(135deg, #e65c00, #ff8c42); }
         .color-ocean { background: linear-gradient(135deg, #0284c7, #0e7ab3); }
         .color-forest { background: linear-gradient(135deg, #15803d, #22c55e); }
         .color-royal { background: linear-gradient(135deg, #9333ea, #a855f7); }
 
-        /* Theme Toggle (Dark/Light) */
         .theme-toggle {
             position: fixed;
             top: 1rem;
@@ -299,7 +284,7 @@
         }
         .theme-toggle:hover { transform: scale(1.02); background: var(--btn-primary); color: white; }
 
-        /* Centered Headings */
+        /* Headings */
         h1, h2, h3, .hero h1, .referral-text h2, .feature-title, .service-card h3, .modal-header h3 { text-align: center; }
         .hero h1 { justify-content: center; display: flex; align-items: center; gap: 8px; }
         .hero .tagline { text-align: center; border-left: none; padding-left: 0; }
@@ -322,7 +307,13 @@
         .copy-btn { padding: 3px 8px; font-size: 0.6rem; background: var(--copy-btn-bg); color: white; border: none; border-radius: 2rem; cursor: pointer; }
         .stats-mini { display: flex; gap: 0.5rem; font-size: 0.6rem; justify-content: center; margin-top: 5px; }
 
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        /* 10 सेवा बॉक्सेस - Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
         .service-card { border-radius: 1.2rem; padding: 0.9rem; transition: all 0.3s ease; cursor: pointer; text-align: center; }
         .service-card:hover { transform: translateY(-4px); box-shadow: 0 15px 25px -12px rgba(0,0,0,0.15); border-color: rgba(243, 179, 61, 0.6); }
 
@@ -361,7 +352,7 @@
     </style>
 </head>
 <body>
-    <!-- 5 कलर बटणे - लाइव्ह कलर इफेक्ट -->
+    <!-- 5 कलर बटणे -->
     <div class="color-palette">
         <div class="color-btn color-default active" data-theme="default" title="डिफॉल्ट थीम"></div>
         <div class="color-btn color-sunset" data-theme="sunset" title="सनसेट थीम"></div>
@@ -370,7 +361,6 @@
         <div class="color-btn color-royal" data-theme="royal" title="रॉयल थीम"></div>
     </div>
 
-    <!-- Dark/Light Mode Toggle -->
     <div class="theme-toggle" id="themeToggleBtn">
         <i class="fas fa-moon" id="themeIcon"></i>
         <span id="themeText">डार्क</span>
@@ -379,7 +369,7 @@
     <div class="container">
         <div class="hero">
             <h1><i class="fas fa-laptop-code"></i> माझी CSC सेवा</h1>
-            <div class="tagline">ग्रामीण डिजिटल सेवा केंद्र | लाइट कंटेनर + 5 लाइव्ह कलर थीम</div>
+            <div class="tagline">ग्रामीण डिजिटल सेवा केंद्र | 10 सेवा बॉक्स | लाइट कंटेनर + 5 लाइव्ह कलर थीम</div>
         </div>
 
         <!-- Referral Section -->
@@ -395,25 +385,46 @@
             </div>
         </div>
 
-        <!-- 8 सेवा बॉक्सेस -->
+        <!-- 10 सेवा बॉक्सेस (8 जुने + 2 नवीन) -->
         <div class="services-grid">
+            <!-- 1. DSC -->
             <div class="service-card" id="dscCard"><div class="icon-large"><i class="fas fa-digital-tiling"></i></div><h3>डिजिटल सिग्नेचर</h3><div class="service-desc">DSC नोंदणी, रिन्यूअल</div><button class="btn-link" id="dscPopupBtn"><i class="fas fa-building"></i> DSC कंपन्या</button></div>
+            
+            <!-- 2. PAN -->
             <div class="service-card" id="panCardCard"><div class="icon-large"><i class="fas fa-id-card"></i></div><h3>PAN कार्ड नोंदणी</h3><div class="service-desc">नवीन पॅन, सुधारणा</div><button class="btn-link" id="panPopupBtn"><i class="fas fa-building"></i> PAN कंपन्या</button></div>
+            
+            <!-- 3. CSC सेवा -->
             <div class="service-card" id="cscServiceCard"><div class="icon-large"><i class="fas fa-globe"></i></div><h3>CSC केंद्र सेवा</h3><div class="service-desc">शासकीय योजना, बिल भरणा</div><a href="#" class="btn-link" id="cscMainLinkBtn"><i class="fas fa-external-link-alt"></i> CSC पोर्टल</a></div>
+            
+            <!-- 4. आधार सेवा -->
             <div class="service-card" id="aadharCard"><div class="icon-large"><i class="fas fa-fingerprint"></i></div><h3>आधार सेवा <span class="demo-badge">Demo</span></h3><div class="service-desc">आधार नोंदणी, सुधारणा</div><a href="#" class="btn-link demo-link" data-url="https://uidai.gov.in/"><i class="fas fa-external-link-alt"></i> आधार पोर्टल</a></div>
+            
+            <!-- 5. वाहन नोंदणी -->
             <div class="service-card" id="vehicleCard"><div class="icon-large"><i class="fas fa-car"></i></div><h3>वाहन नोंदणी <span class="demo-badge">Demo</span></h3><div class="service-desc">परवाना, आरसी, चालान</div><a href="#" class="btn-link demo-link" data-url="https://parivahan.gov.in/"><i class="fas fa-external-link-alt"></i> Parivahan</a></div>
+            
+            <!-- 6. शिष्यवृत्ती सेवा -->
             <div class="service-card" id="scholarshipCard"><div class="icon-large"><i class="fas fa-graduation-cap"></i></div><h3>शिष्यवृत्ती सेवा <span class="demo-badge">Demo</span></h3><div class="service-desc">विद्यार्थी शिष्यवृत्ती</div><a href="#" class="btn-link demo-link" data-url="https://scholarships.gov.in/"><i class="fas fa-external-link-alt"></i> शिष्यवृत्ती</a></div>
+            
+            <!-- 7. पासपोर्ट सेवा -->
             <div class="service-card" id="passportCard"><div class="icon-large"><i class="fas fa-passport"></i></div><h3>पासपोर्ट सेवा <span class="demo-badge">Demo</span></h3><div class="service-desc">पासपोर्ट अर्ज, अपॉइंटमेंट</div><a href="#" class="btn-link demo-link" data-url="https://passportindia.gov.in/"><i class="fas fa-external-link-alt"></i> पासपोर्ट</a></div>
+            
+            <!-- 8. रोजगार सेवा -->
             <div class="service-card" id="employmentCard"><div class="icon-large"><i class="fas fa-briefcase"></i></div><h3>रोजगार सेवा <span class="demo-badge">Demo</span></h3><div class="service-desc">नोकरी, माहिती, मार्गदर्शन</div><a href="#" class="btn-link demo-link" data-url="https://www.ncs.gov.in/"><i class="fas fa-external-link-alt"></i> रोजगार</a></div>
+            
+            <!-- 9. नवीन: आरोग्य सेवा (Health Services) -->
+            <div class="service-card" id="healthCard"><div class="icon-large"><i class="fas fa-heartbeat"></i></div><h3>आरोग्य सेवा <span class="demo-badge">Demo</span></h3><div class="service-desc">कोविड, आरोग्य योजना, काळजी</div><a href="#" class="btn-link demo-link" data-url="https://www.mohfw.gov.in/"><i class="fas fa-external-link-alt"></i> आरोग्य पोर्टल</a></div>
+            
+            <!-- 10. नवीन: कृषी सेवा (Agriculture Services) -->
+            <div class="service-card" id="agricultureCard"><div class="icon-large"><i class="fas fa-tractor"></i></div><h3>कृषी सेवा <span class="demo-badge">Demo</span></h3><div class="service-desc">शेतकरी योजना, बियाणे, मदत</div><a href="#" class="btn-link demo-link" data-url="https://agriwelfare.gov.in/"><i class="fas fa-external-link-alt"></i> कृषी पोर्टल</a></div>
         </div>
 
         <div class="double-feature">
-            <div class="feature-block"><div class="feature-title"><i class="fas fa-network-wired"></i> CSC लिंक</div><div class="feature-link"><span><i class="fas fa-link"></i></span><a href="#" id="cscDirectLink">csc.gov.in</a><span class="visit-icon" id="visitCSCBtn">भेट द्या</span></div><p>CSC ई-सेवा</p></div>
+            <div class="feature-block"><div class="feature-title"><i class="fas fa-network-wired"></i> CSC लिंक</div><div class="feature-link"><span><i class="fas fa-link"></i></span><a href="#" id="cscDirectLink">csc.gov.in</a><span class="visit-icon" id="visitCSCBtn">भेट द्या</span></div><p>CSC ई-सेवा, डिजीलॉकर</p></div>
             <div class="feature-block"><div class="feature-title"><i class="fas fa-landmark"></i> आपले सरकार</div><div class="feature-link"><span><i class="fas fa-handshake"></i></span><a href="#" id="aapleSarkarLink">aaplesarkar.maharashtra.gov.in</a><span class="visit-icon" id="visitAapleBtn">भेट द्या</span></div><p>महाराष्ट्र शासन योजना</p></div>
         </div>
         
-        <div class="info-note"><p><i class="fas fa-info-circle"></i> ✨ वरच्या 5 रंगीत बटणांवर क्लिक करा - बॅकग्राउंड आणि कंटेनरचा रंग लाइव्ह बदलेल! DSC/PAN साठी पॉपअप, 8 सेवा उपलब्ध.</p></div>
-        <footer><i class="fas fa-chalkboard-user"></i> माझी CSC सेवा | लाइट कंटेनर | 5 लाइव्ह कलर थीम | 3D अ‍ॅनिमेशन © 2025</footer>
+        <div class="info-note"><p><i class="fas fa-info-circle"></i> ✨ वरच्या 5 रंगीत बटणांवर क्लिक करा - बॅकग्राउंड आणि कंटेनरचा रंग लाइव्ह बदलेल! एकूण 10 सेवा उपलब्ध. DSC/PAN साठी पॉपअप.</p></div>
+        <footer><i class="fas fa-chalkboard-user"></i> माझी CSC सेवा | 10 सेवा बॉक्स | लाइट कंटेनर | 5 लाइव्ह कलर थीम | 3D अ‍ॅनिमेशन © 2025</footer>
     </div>
 
     <!-- Modals -->
@@ -422,7 +433,6 @@
     <div id="toastMsg" class="toast-msg">✓ कॉपी झाले!</div>
 
     <script>
-        // DSC & PAN Companies
         const dscCompanies = [
             { name: "eMudhra (ई-मुद्रा)", url: "https://www.emudhra.com/dsc" },
             { name: "nCode Solutions", url: "https://www.ncode.in/digital-signature-certificate" },
@@ -437,7 +447,6 @@
             { name: "CSC PAN सेवा", url: "https://csc.gov.in/panCardApplication" }
         ];
 
-        // Modal functions
         const dscModal = document.getElementById('dscModal'), panModal = document.getElementById('panModal');
         const populateList = (container, companies) => {
             container.innerHTML = '';
@@ -459,15 +468,12 @@
         [dscModal, panModal].forEach(m => m.addEventListener('click', (e) => { if(e.target === m) closeModal(m); }));
         document.addEventListener('keydown', (e) => { if(e.key === 'Escape') { if(dscModal.classList.contains('active')) closeModal(dscModal); if(panModal.classList.contains('active')) closeModal(panModal); } });
 
-        // Card clicks for popups
         document.getElementById('dscCard').addEventListener('click', (e) => { if(!e.target.closest('.btn-link')) { populateList(document.getElementById('dscCompanyList'), dscCompanies); openModal(dscModal); } });
         document.getElementById('panCardCard').addEventListener('click', (e) => { if(!e.target.closest('.btn-link')) { populateList(document.getElementById('panCompanyList'), panCompanies); openModal(panModal); } });
 
-        // Copy referral
         const copyBtn = document.getElementById('copyReferralBtn'), refInput = document.getElementById('referralLinkInput'), toast = document.getElementById('toastMsg');
         copyBtn.onclick = () => { refInput.select(); navigator.clipboard.writeText(refInput.value).then(() => { toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2000); }); };
 
-        // Links
         document.getElementById('cscMainLinkBtn').onclick = (e) => { e.preventDefault(); window.open('https://csc.gov.in/', '_blank'); };
         document.getElementById('cscDirectLink').onclick = (e) => { e.preventDefault(); window.open('https://csc.gov.in/', '_blank'); };
         document.getElementById('visitCSCBtn').onclick = () => window.open('https://csc.gov.in/', '_blank');
@@ -475,20 +481,19 @@
         document.getElementById('visitAapleBtn').onclick = () => window.open('https://aaplesarkar.maharashtra.gov.in/', '_blank');
         document.querySelectorAll('.demo-link').forEach(link => link.addEventListener('click', (e) => { e.preventDefault(); window.open(link.dataset.url, '_blank'); }));
 
-        // Card clicks for demo cards
-        const demoCardIds = ['aadharCard', 'vehicleCard', 'scholarshipCard', 'passportCard', 'employmentCard'];
-        const demoUrls = ['https://uidai.gov.in/', 'https://parivahan.gov.in/', 'https://scholarships.gov.in/', 'https://passportindia.gov.in/', 'https://www.ncs.gov.in/'];
+        const demoCardIds = ['aadharCard', 'vehicleCard', 'scholarshipCard', 'passportCard', 'employmentCard', 'healthCard', 'agricultureCard'];
+        const demoUrls = [
+            'https://uidai.gov.in/', 'https://parivahan.gov.in/', 'https://scholarships.gov.in/', 
+            'https://passportindia.gov.in/', 'https://www.ncs.gov.in/', 
+            'https://www.mohfw.gov.in/', 'https://agriwelfare.gov.in/'
+        ];
         demoCardIds.forEach((id, i) => { document.getElementById(id).addEventListener('click', (e) => { if(!e.target.closest('a')) window.open(demoUrls[i], '_blank'); }); });
         document.getElementById('cscServiceCard').addEventListener('click', (e) => { if(!e.target.closest('a')) window.open('https://csc.gov.in/', '_blank'); });
 
-        // ========== 5 लाइव्ह कलर थीम बदलण्याची स्क्रिप्ट ==========
+        // Theme color change
         const colorBtns = document.querySelectorAll('.color-btn');
         const bodyElement = document.body;
-        
-        function removeAllThemes() {
-            bodyElement.classList.remove('theme-sunset', 'theme-ocean', 'theme-forest', 'theme-royal');
-        }
-        
+        function removeAllThemes() { bodyElement.classList.remove('theme-sunset', 'theme-ocean', 'theme-forest', 'theme-royal'); }
         colorBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const theme = btn.dataset.theme;
@@ -499,11 +504,9 @@
                 else if (theme === 'ocean') bodyElement.classList.add('theme-ocean');
                 else if (theme === 'forest') bodyElement.classList.add('theme-forest');
                 else if (theme === 'royal') bodyElement.classList.add('theme-royal');
-                // default theme - no extra class
             });
         });
 
-        // Dark/Light Mode Toggle
         const toggleBtn = document.getElementById('themeToggleBtn');
         const themeIcon = document.getElementById('themeIcon');
         const themeText = document.getElementById('themeText');
